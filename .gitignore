@@ -32,3 +32,14 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+# FMOD Ignore
+/Assets/StreamingAssets/*.bank
+/Assets/StreamingAssets/*.bank.meta
+/Assets/StreamingAssets.meta
+/Assets/FMODStudioCache.asset
+/Assets/FMODStudioCache.asset.meta
+fmod.log
+fmod_editor.log
+
+Build.zip
