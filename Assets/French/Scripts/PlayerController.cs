@@ -12,23 +12,35 @@ public class PlayerController : MonoBehaviour
     float vSpeed;
     [SerializeField] float maxVSpeed;
 
-    Vector3 MoveVector;
+    Vector3 moveVector;
+	[SerializeField] float moveSpeed;
 
 
-    // Use this for initialization
     void Start ()
     {
         control = GetComponent<CharacterController>();
 	}
 	
-	// Update is called once per frame
 	void Update ()
     {
         v = Input.GetAxis("Vertical");
         h = Input.GetAxis("Horizontal");
 
-        transform.position += new Vector3(-v, 0, h);
+		ManageMovement();
 	}
+
+
+	void ManageMovement()
+	{
+		moveVector = new Vector3(h, 0, v);
+		moveVector.Normalize();
+		moveVector *= moveSpeed;
+
+		Gravity();
+
+		control.Move(moveVector * Time.deltaTime);
+	}
+
 
     void Gravity()
     {
@@ -37,5 +49,6 @@ public class PlayerController : MonoBehaviour
             vSpeed -= gravity;
             vSpeed = Mathf.Min(vSpeed, maxVSpeed);
         }
+		moveVector.y = vSpeed;
     }
 }
