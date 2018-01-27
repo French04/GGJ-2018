@@ -43,8 +43,8 @@ fmod.log
 fmod_editor.log
 
 # librerie aggiuntive
-/Assets/Editor
-/Assets/XboxCtrlrlnputExample
-/Assets/XInputDotNet
+/Assets/Editor.meta
+/Assets/XboxCtrlrlnputExample.meta
+/Assets/XInputDotNet.meta
 
 Build.zip
