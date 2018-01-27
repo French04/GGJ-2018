@@ -20,8 +20,13 @@ public class Parry : MonoBehaviour {
 		
 		/*if (hit.CompareTag("PickUp"))
 		{
+<<<<<<< HEAD
 			player.SetShouldCarry(true, hit.GetComponent<PickUp>().GetBulletGO(), gameObject);
 		}*/
+=======
+			player.SetShouldCarry(true, hit.GetComponent<PickUp>().GetBulletGO());
+		}
+>>>>>>> e5f85e5cee0694f31dfd833bf8b03727a887308f
 	}
 
 
