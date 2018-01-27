@@ -37,7 +37,6 @@ public class InputController : MonoBehaviour {
             horizontal = Input.GetAxis("Horizontal_Keyboard");
             vertical = Input.GetAxis("Vertical_Keyboard");
         }
-        Debug.Log(new Vector3(horizontal, 0.0f, vertical));
         return new Vector3(horizontal, 0.0f, vertical);
     }
 
