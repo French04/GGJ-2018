@@ -288,7 +288,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pivot: {fileID: 4188465038947322}
   bulletPoint: {fileID: 4442618432764460}
-  team: 1
+  team: 2
   gravity: 2
   maxVSpeed: 16
   lastDirection: {x: 0, y: 0, z: 0}
@@ -296,11 +296,12 @@ MonoBehaviour:
   rollSpeed: 32
   rollTime: 0.1
   parryTime: 0.5
+  carrying: 0
   bulletCarried: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177,
     type: 2}
   throwOffset: 0.5
   throwStepTime: 1
-  patricleCharge:
+  particleCharge:
   - {fileID: 1090029539365248}
   - {fileID: 1696129629435228}
 --- !u!114 &114121718517159940
@@ -431,7 +432,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1690472105
+  randomSeed: 1112972421
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3837,7 +3838,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -700143777
+  randomSeed: 375007029
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7198,7 +7199,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1894156498
+  randomSeed: 516407728
   InitialModule:
     serializedVersion: 3
     enabled: 1

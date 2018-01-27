@@ -53,7 +53,7 @@ public class PlayerController : MonoBehaviour
 
     BulletForce.BulletType actualBulletType;
 
-	[SerializeField] GameObject[] patricleCharge;
+	[SerializeField] GameObject[] particleCharge;
 	ParticleSystem particleSmoke;
 
     void Start ()
@@ -191,6 +191,26 @@ public class PlayerController : MonoBehaviour
 				throwForce++;
 				throwStepTimer = throwStepTime;
 				print("PowerUp!");
+			}
+
+			switch (throwForce)
+			{
+				case 0:
+					particleCharge[0].SetActive(false);
+					particleCharge[0].SetActive(false);
+					break;
+				case 1:
+					particleCharge[0].SetActive(true);
+					particleCharge[0].SetActive(false);
+					break;
+				case 2:
+					particleCharge[1].SetActive(false);
+					particleCharge[0].SetActive(false);
+					break;
+				case 3:
+					particleCharge[0].SetActive(false);
+					particleCharge[1].SetActive(false);
+					break;
 			}
 		}
 	}
