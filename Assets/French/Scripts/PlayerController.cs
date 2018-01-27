@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
 	CapsuleCollider parryCollider;
 	Animator anim;
 	[SerializeField] Transform pivot;
+	[SerializeField] Transform bulletPoint;
 
 	public int team; 
 
@@ -125,7 +126,7 @@ public class PlayerController : MonoBehaviour
 			{
 				if (throwForce > 0 && carrying)
 				{
-					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
+					GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
 					//i.transform.rotation = Quaternion.Euler(lastDirection);
 					i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
 					carrying = false;
