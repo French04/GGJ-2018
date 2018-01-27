@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     Vector3 moveVector;
 	[HideInInspector] public Vector3 lastDirection;
+	Vector3 rollingDirection;
 	[SerializeField] float moveSpeed;
 
 	bool rolling = false;
@@ -35,10 +36,11 @@ public class PlayerController : MonoBehaviour
         v = -Input.GetAxis("Vertical");
         h = -Input.GetAxis("Horizontal");
 
-		if (Input.GetAxis("Jump") > 0)
+		if (Input.GetAxis("Jump") > 0 && !rolling)
 		{
 			rolling = true;
 			rollTimer = rollTime;
+			rollingDirection = lastDirection;
 		}
 
 		ManageMovement();
@@ -50,14 +52,14 @@ public class PlayerController : MonoBehaviour
 		moveVector = new Vector3(h, 0, v);
 		moveVector.Normalize();
 
-		if(moveVector.magnitude > 0 && !rolling)
+		if(moveVector.magnitude > 0)
 			lastDirection = moveVector;
 
 		if (!rolling)
 			moveVector *= moveSpeed;
 		else
 		{
-			moveVector = lastDirection * rollSpeed;
+			moveVector = rollingDirection * rollSpeed;
 			if (rollTimer > 0)
 				rollTimer -= Time.deltaTime;
 			else
