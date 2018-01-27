@@ -98,6 +98,7 @@ MonoBehaviour:
   bullet: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177, type: 2}
   bulletType: 1
   bulletIcon: {fileID: 0}
+  enabledTime: 2
 --- !u!135 &135353348061265214
 SphereCollider:
   m_ObjectHideFlags: 1
