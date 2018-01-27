@@ -29,14 +29,13 @@ public class PickUp : MonoBehaviour {
     private void Update()
     {
         if (enabledTime <= Time.time - takeItMoment && myRender.enabled == false)
-        {            
+        {
             myRender.enabled = true;
             myCollider.enabled = true;
             isPickUppable = true;
         }
         if (startAnimation <= Time.time - animationStarted && myRender.enabled == false)
         {
-            Debug.Log("bu");
             
         }
         
@@ -52,13 +51,14 @@ public class PickUp : MonoBehaviour {
             if(isPickUppable)
 			    player.SetShouldCarry(true, bullet, null, bulletType, bulletIcon);
 
-            if (player.carrying == true && control.isFiring())
+            if (player.carrying == false && control.isFiring())
             {
                 myRender.enabled = false;
                 myCollider.enabled = false;
                 isPickUppable = false;
                 takeItMoment = Time.time;
                 animationStarted = Time.time;
+                Debug.Log("Spawn");
             }
 
 		}
