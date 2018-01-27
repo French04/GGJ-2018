@@ -33,10 +33,12 @@ public class PlayerController : MonoBehaviour
 	float rollTimer;
 
 	bool parrying = false;
+	[SerializeField] float parryTime;
+	float parryTimer;
 	bool shouldParry = false;
     bool lastParryState = false;
 
-	bool carrying = false;
+	[HideInInspector] public bool carrying = false;
 	bool shouldCarry = false;
 	GameObject bulletPickUp;
 	GameObject pickUpGO;
@@ -51,8 +53,7 @@ public class PlayerController : MonoBehaviour
 
     BulletForce.BulletType actualBulletType;
 
-	[SerializeField] GameObject charge1;
-	[SerializeField] GameObject charge2;
+	[SerializeField] GameObject[] patricleCharge;
 	ParticleSystem particleSmoke;
 
     void Start ()
@@ -69,171 +70,138 @@ public class PlayerController : MonoBehaviour
 		throwStepTimer = throwStepTime;
 	}
 
-    void Update()
-    {
-        if (!parrying)
-        {
-            moveVector = -inputController.getDirection();
-            if (inputController.isDashing())
-            {
-                if (!rolling && canRoll)
-                {
-                    rolling = true;
-					particleSmoke.Play();
-                    rollTimer = rollTime;
-                    rollingDirection = lastDirection;
-                    canRoll = false;
-                    anim.SetBool("Rolling", true);
-                }
-            }
-            else
-            {
-                canRoll = true;
-            }
+	void Update()
+	{
 
-            if (inputController.isFiring())
-            {
-                if (!carrying)
-                {
-                    if (shouldParry)
-                    {
-                        parrying = true;
-                        anim.SetTrigger("Parry");
-                    }
-                    else if (shouldCarry)
-                    {
-                        carrying = true;
-                        bulletCarried = bulletPickUp;
-                        Destroy(pickUpGO);
-                        canThrow = false;
-                        shouldCarry = false;
-                    }
-                }
-                else
-                {
-                    if (!rolling)
-                    {
-                        if (throwForce == 0 && canThrow)
-                            throwForce = 1;
-
-                        if (throwForce < 3)
-                        {
-                            if (throwStepTimer > 0)
-                            {
-                                throwStepTimer -= Time.deltaTime;
-                            }
-                            else
-                            {
-                                throwForce++;
-                                throwStepTimer = throwStepTime;
-                                print("PowerUp!");
-                            }
-                        }
-                    }
-                }
-            }
-            else
-            {
-                if (throwForce > 0 && carrying)
-                {
-                    GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
-                    //i.transform.rotation = Quaternion.Euler(lastDirection);
-                    i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
-                    carrying = false;
-                    bulletCarried = null;
-                    throwForce = 0;
-                }
-
-                moveVector = -inputController.getDirection();
-                if (inputController.isDashing())
-                {
-					if (!rolling && canRoll)
-					{
-						rolling = true;
-						particleSmoke.Play();
-						rollTimer = rollTime;
-						rollingDirection = lastDirection;
-						canRoll = false;
-						anim.SetBool("Rolling", true);
-					}
-                }
-                else
-                {
-                    canRoll = true;
-                }
-
-                if (inputController.isFiring())
-                {
-                    if (!carrying)
-                    {
-
-                        if (shouldCarry)
-                        {
-                            carrying = true;
-                            bulletCarried = bulletPickUp;
-                            Destroy(pickUpGO);
-                            canThrow = false;
-                            shouldCarry = false;
-                        }
-                        else
-                        {
-                            parrying = true;
-                            DoParry(parrying);
-                        }
-                    }
-                    else
-                    {
-                        if (!rolling)
-                        {
-                            if (throwForce == 0 && canThrow)
-                                throwForce = 1;
-
-                            if (throwForce < 3)
-                            {
-                                if (throwStepTimer > 0)
-                                {
-                                    throwStepTimer -= Time.deltaTime;
-                                }
-                                else
-                                {
-                                    throwForce++;
-                                    throwStepTimer = throwStepTime;
-                                    print("PowerUp!");
-                                }
-                            }
-                        }
-                    }
-                }
-                else
-                {
-                    if (throwForce > 0 && carrying)
-                    {
-                        GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
-                        //i.transform.rotation = Quaternion.Euler(lastDirection);
-                        i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
-                        carrying = false;
-                        bulletCarried = null;
-                        throwForce = 0;
-						anim.SetTrigger("Throw");
-                    }
-
-                    canThrow = true;
-                }
-
-
-            }
-
-            if (!inputController.isFiring())
-            {
-                parrying = false;
-                DoParry(false);
-            }
-
-
-
-            ManageMovement();
-        }
+		ManageInput();
+		ManageMovement();
+        
     }
+
+
+	void ManageInput()
+	{
+		moveVector = -inputController.getDirection();
+
+		if (!parrying)
+		{
+			if (inputController.isDashing())
+			{
+				Dash();
+			}
+			else
+			{
+				canRoll = true;
+			}
+
+			if (inputController.isFiring())
+			{
+				if (!carrying)
+				{
+					if (shouldCarry)
+					{
+						Carry();
+					}
+					else
+					{
+						Parry();
+					}
+				}
+				else
+				{
+					ChargeShot();
+				}
+			}
+			else
+			{
+				Throw();
+			}
+		}
+		else
+		{
+			if (parryTimer > 0)
+			{
+				parryTimer -= Time.deltaTime;
+			}
+			else
+			{
+				parrying = false;
+				anim.SetBool("Parry", false);
+			}
+		}
+	}
+
+
+
+	void Dash()
+	{
+		if (!rolling && canRoll)
+		{
+			rolling = true;
+			particleSmoke.Play();
+			rollTimer = rollTime;
+			rollingDirection = lastDirection;
+			canRoll = false;
+			anim.SetBool("Rolling", true);
+		}
+	}
+
+
+	void Carry()
+	{
+		carrying = true;
+		bulletCarried = bulletPickUp;
+		Destroy(pickUpGO);
+		canThrow = false;
+		shouldCarry = false;
+	}
+
+
+	void Parry()
+	{
+		parrying = true;
+		anim.SetBool("Parry", true);
+		parryTimer = parryTime;
+	}
+
+
+	void ChargeShot()
+	{
+		if (throwForce == 0 && canThrow)
+			throwForce = 1;
+
+		if (throwForce < 3)
+		{
+			if (throwStepTimer > 0)
+			{
+				throwStepTimer -= Time.deltaTime;
+			}
+			else
+			{
+				throwForce++;
+				throwStepTimer = throwStepTime;
+				print("PowerUp!");
+			}
+		}
+	}
+
+
+
+	void Throw()
+	{
+		if (throwForce > 0 && carrying)
+		{
+			GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
+			i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
+			carrying = false;
+			bulletCarried = null;
+			throwForce = 0;
+			anim.SetTrigger("Throw");
+		}
+
+		canThrow = true;
+	}
+
 
 	void ManageMovement()
 	{
@@ -250,7 +218,12 @@ public class PlayerController : MonoBehaviour
 		}
 
 		if (!rolling)
-			moveVector *= moveSpeed;
+		{
+			if (!parrying)
+				moveVector *= moveSpeed;
+			else
+				moveVector = Vector3.zero;
+		}
 		else
 		{
 			moveVector = rollingDirection * rollSpeed;
@@ -267,15 +240,18 @@ public class PlayerController : MonoBehaviour
 
 		Gravity();
 
-		if (lastDirection.x >= 0)
+		if (!parrying)
 		{
-			renderer.flipX = false;
-			pivot.localScale = new Vector3(1,1,1);
-		}
-		else
-		{
-			renderer.flipX = true;
-			pivot.localScale = new Vector3(-1, 1, 1);
+			if (lastDirection.x >= 0)
+			{
+				renderer.flipX = false;
+				pivot.localScale = new Vector3(1, 1, 1);
+			}
+			else
+			{
+				renderer.flipX = true;
+				pivot.localScale = new Vector3(-1, 1, 1);
+			}
 		}
 
 		control.Move(moveVector * Time.deltaTime);
@@ -308,7 +284,7 @@ public class PlayerController : MonoBehaviour
 		bulletIcon = icon;
     }
 
-    public void DoParry(bool state) {
+    /*public void DoParry(bool state) {
         //TODO: Parry animation
         if (state && !lastParryState)
         {
@@ -320,5 +296,5 @@ public class PlayerController : MonoBehaviour
             //Parry off
         }
         lastParryState = state;
-    }
+    }*/
 }
