@@ -111,10 +111,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee80d7581345443a71cb32316c02b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mySpeed: 2
+  mySpeed: 6
   myTeam: 0
   myBulletType: 0
-  amplitude: 10
+  amplitude: 20
   frequency: 7
 --- !u!135 &135249130690122502
 SphereCollider:
