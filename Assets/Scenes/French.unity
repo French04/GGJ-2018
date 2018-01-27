@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 99826650}
   - component: {fileID: 99826649}
   m_Layer: 0
-  m_Name: Bounce2
+  m_Name: Goal2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -209,7 +209,7 @@ GameObject:
   - component: {fileID: 357323158}
   - component: {fileID: 357323157}
   m_Layer: 0
-  m_Name: Bounce
+  m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -356,7 +356,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 431599024}
   m_LocalRotation: {x: 0.27494007, y: 0.008644421, z: 0.025960831, w: 0.96107197}
-  m_LocalPosition: {x: -13.1, y: 8.3, z: -24.2}
+  m_LocalPosition: {x: -13.22, y: 10.41, z: -27.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -378,7 +378,7 @@ GameObject:
   - component: {fileID: 494980504}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,10 +394,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5213d79cad14cd34d822f40d1d2890ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 0
+  gravity: 2
   maxVSpeed: 5
-  moveVector: {x: 0, y: 0, z: 0}
+  lastDirection: {x: 0, y: 0, z: 0}
   moveSpeed: 5
+  rollSpeed: 0
+  rollTime: 0
+  bullet: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177, type: 2}
 --- !u!23 &494980500
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -492,7 +495,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a2b76a619c380649afa2b5475d20d65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linebullet: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177, type: 2}
 --- !u!1 &651497442
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,7 +553,7 @@ MeshCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651497442}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c57c0efa5eb8cd24cbf670a157277166, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -656,8 +658,8 @@ GameObject:
   - component: {fileID: 1815812558}
   - component: {fileID: 1815812557}
   m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
+  m_Name: Bouncing
+  m_TagString: Bounce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -702,7 +704,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1815812556}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c57c0efa5eb8cd24cbf670a157277166, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -723,7 +725,7 @@ Transform:
   m_GameObject: {fileID: 1815812556}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5980444, y: 7.004457, z: -16.317356}
-  m_LocalScale: {x: 35.54078, y: 1, z: 1}
+  m_LocalScale: {x: 35.54078, y: 3.3414266, z: 3.4342546}
   m_Children: []
   m_Father: {fileID: 1873055045}
   m_RootOrder: 0
@@ -772,8 +774,8 @@ GameObject:
   - component: {fileID: 2036050266}
   - component: {fileID: 2036050265}
   m_Layer: 0
-  m_Name: Cube (1)
-  m_TagString: Untagged
+  m_Name: Bouncing2
+  m_TagString: Bounce
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -818,7 +820,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2036050264}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: c57c0efa5eb8cd24cbf670a157277166, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -839,7 +841,7 @@ Transform:
   m_GameObject: {fileID: 2036050264}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -2.5980444, y: 7.004457, z: 19.572643}
-  m_LocalScale: {x: 35.54078, y: 1, z: 1}
+  m_LocalScale: {x: 35.54078, y: 3.3414266, z: 5.1690073}
   m_Children: []
   m_Father: {fileID: 1873055045}
   m_RootOrder: 1
