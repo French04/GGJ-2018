@@ -12,9 +12,7 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] Transform pivot;
 	[SerializeField] Transform bulletPoint;
 
-
 	public int team;
-
 
     InputController inputController;
     [SerializeField] float gravity;
@@ -197,19 +195,19 @@ public class PlayerController : MonoBehaviour
 			{
 				case 0:
 					particleCharge[0].SetActive(false);
-					particleCharge[0].SetActive(false);
+					particleCharge[1].SetActive(false);
 					break;
 				case 1:
-					particleCharge[0].SetActive(true);
 					particleCharge[0].SetActive(false);
+					particleCharge[1].SetActive(false);
 					break;
 				case 2:
+					particleCharge[0].SetActive(true);
 					particleCharge[1].SetActive(false);
-					particleCharge[0].SetActive(false);
 					break;
 				case 3:
 					particleCharge[0].SetActive(false);
-					particleCharge[1].SetActive(false);
+					particleCharge[1].SetActive(true);
 					break;
 			}
 		}
@@ -226,6 +224,8 @@ public class PlayerController : MonoBehaviour
 			carrying = false;
 			bulletCarried = null;
 			throwForce = 0;
+			particleCharge[0].SetActive(false);
+			particleCharge[1].SetActive(false);
 			anim.SetTrigger("Throw");
 		}
 
