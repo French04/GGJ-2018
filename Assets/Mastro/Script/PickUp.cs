@@ -10,16 +10,19 @@ public class PickUp : MonoBehaviour {
     public BulletForce.BulletType bulletType;
 	public Texture2D bulletIcon;
     MeshRenderer myRender;
+    Collider myCollider;
 
     public float enabledTime;
     float takeItMoment;
     float startAnimation;
+    float animationStarted;
 
     bool isPickUppable = true;
 
     void Start()
     {
         myRender = GetComponent<MeshRenderer>();
+        myCollider = GetComponent<Collider>();
         startAnimation = enabledTime - 1f;
     }
 
@@ -28,11 +31,12 @@ public class PickUp : MonoBehaviour {
         if (enabledTime <= Time.time - takeItMoment && myRender.enabled == false)
         {            
             myRender.enabled = true;
+            myCollider.enabled = true;
             isPickUppable = true;
         }
-        if (startAnimation <= Time.time - takeItMoment && myRender.enabled == false)
+        if (startAnimation <= Time.time - animationStarted && myRender.enabled == false)
         {
-            
+            Debug.Log("bu");
             
         }
         
@@ -46,13 +50,15 @@ public class PickUp : MonoBehaviour {
             control = hit.GetComponent<InputController>();
 
             if(isPickUppable)
-			    player.SetShouldCarry(true, bullet, gameObject, bulletType, bulletIcon);
+			    player.SetShouldCarry(true, bullet, null, bulletType, bulletIcon);
 
             if (player.carrying == true && control.isFiring())
             {
                 myRender.enabled = false;
+                myCollider.enabled = false;
                 isPickUppable = false;
                 takeItMoment = Time.time;
+                animationStarted = Time.time;
             }
 
 		}
@@ -65,7 +71,4 @@ public class PickUp : MonoBehaviour {
 			player.SetShouldCarry(false, null, gameObject, bulletType, bulletIcon);
 		}
 	}
-
-
-
 }
