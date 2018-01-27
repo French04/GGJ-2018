@@ -23,6 +23,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float rollTime;
 	float rollTimer;
 
+	public GameObject bullet;
+
     void Start ()
     {
         control = GetComponent<CharacterController>();
@@ -41,6 +43,11 @@ public class PlayerController : MonoBehaviour
 			rolling = true;
 			rollTimer = rollTime;
 			rollingDirection = lastDirection;
+		}
+
+		if (Input.GetAxis("Fire_P1") > 0 && !rolling)
+		{
+			Instantiate(bullet, transform.position, transform.rotation);
 		}
 
 		ManageMovement();

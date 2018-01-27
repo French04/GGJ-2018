@@ -48,3 +48,7 @@ fmod_editor.log
 /Assets/XInputDotNet.meta
 
 Build.zip
+XboxCtrlrInputExample.meta
+Assets/XInputDotNet
+Assets/Editor
+Assets/XboxCtrlrInputExample
