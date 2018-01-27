@@ -104,7 +104,7 @@ public class PlayerController : MonoBehaviour
 					}
 					else
 					{
-						Parry();
+						Parry(true);
 					}
 				}
 				else
@@ -125,8 +125,7 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				parrying = false;
-				anim.SetBool("Parry", false);
+                Parry(false);
 			}
 		}
 	}
@@ -157,12 +156,23 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	void Parry()
+	void Parry(bool state)
 	{
-		parrying = true;
-		anim.SetBool("Parry", true);
-		parryTimer = parryTime;
-	}
+		
+        if (state && !lastParryState)
+        {
+            parrying = true;
+            anim.SetBool("Parry", true);
+            parryTimer = parryTime;
+
+        }
+        else if (!state && lastParryState)
+        {
+            parrying = false;
+            anim.SetBool("Parry", false);
+        }
+        lastParryState = state;
+    }
 
 
 	void ChargeShot()
@@ -284,17 +294,5 @@ public class PlayerController : MonoBehaviour
 		bulletIcon = icon;
     }
 
-    /*public void DoParry(bool state) {
-        //TODO: Parry animation
-        if (state && !lastParryState)
-        {
-
-            anim.SetTrigger("Parry");
-
-        }
-        else if (!state && lastParryState) {
-            //Parry off
-        }
-        lastParryState = state;
-    }*/
+    
 }
