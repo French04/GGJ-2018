@@ -23,12 +23,21 @@ public class GameScore : MonoBehaviour {
 		scoreText1 = scoreboard1.GetComponent<TextMesh>();
 		scoreText2 = scoreboard2.GetComponent<TextMesh>();
 		timerText = timer.GetComponent<TextMesh>();
-		UpdateScore();
+		UpdateScore(0);
 	}
 
 
-	public void UpdateScore()
+	public void UpdateScore(int team)
 	{
+        if(team == 1)
+        {
+            teamOneScore++;
+        }
+        else if(team == 2)
+        {
+            teamTwoScore++;
+        }
+
 		scoreText1.text = teamOneScore.ToString();
 		scoreText2.text = teamTwoScore.ToString();
 	}

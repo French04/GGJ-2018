@@ -20,6 +20,8 @@ public class BulletForce : MonoBehaviour
     private Vector3 effectDirection; //Actual velocity
     //CharacterController myController;
 
+    GameScore score;
+
     public enum BulletType
     {
         Raccomandata,
@@ -35,6 +37,8 @@ public class BulletForce : MonoBehaviour
 
         myRigid.velocity = myDirection * mySpeed * 10;
         leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
+
+        score = GameObject.FindObjectOfType<GameScore>();
     }
 
     void FixedUpdate()
@@ -59,6 +63,12 @@ public class BulletForce : MonoBehaviour
         if (other.CompareTag("Goal"))
         {
             Destroy(this.gameObject);
+            score.UpdateScore(1);
+        }
+        else if (other.CompareTag("Goal2"))
+        {
+            Destroy(this.gameObject);
+            score.UpdateScore(2);
         }
     }
 
