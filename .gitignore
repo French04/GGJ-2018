@@ -42,4 +42,9 @@ sysinfo.txt
 fmod.log
 fmod_editor.log
 
+# librerie aggiuntive
+/Assets/Editor
+/Assets/XboxCtrlrlnputExample
+/XInputDotNet
+
 Build.zip
