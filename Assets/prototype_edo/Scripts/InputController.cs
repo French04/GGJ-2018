@@ -20,7 +20,6 @@ public class InputController : MonoBehaviour {
         if (!useKeyboard){
             state = GamePad.GetState(playerControllerIndex);
         }
-        Debug.Log(isFiring());
     }
 
 
