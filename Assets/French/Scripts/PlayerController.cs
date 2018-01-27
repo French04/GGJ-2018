@@ -109,7 +109,7 @@ public class PlayerController : MonoBehaviour
 				{
 					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
 					i.transform.rotation = Quaternion.Euler(lastDirection);
-					i.GetComponent<BulletForce>.SetSpeed(throwForce);
+					i.GetComponent<BulletForce>().SetSpeed(throwForce);
 					carrying = false;
 					throwForce = 0;
 				}
