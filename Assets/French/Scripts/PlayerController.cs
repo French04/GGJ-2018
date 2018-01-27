@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
 	CapsuleCollider myCollider;
 	CapsuleCollider parryCollider;
 	Animator anim;
+	[SerializeField] Transform pivot;
 
 	public int team; 
 
@@ -55,7 +56,7 @@ public class PlayerController : MonoBehaviour
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
 
-		lastDirection = new Vector3(-1,0,0);
+		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
 	}
 	
@@ -71,6 +72,12 @@ public class PlayerController : MonoBehaviour
 				rolling = true;
 				rollTimer = rollTime;
 				rollingDirection = lastDirection;
+				canRoll = false;
+				print("roll");
+			}
+			else
+			{
+				canRoll = true;
 			}
 
 			if (Input.GetAxis("Fire_P1") > 0)
@@ -158,9 +165,15 @@ public class PlayerController : MonoBehaviour
 		Gravity();
 
 		if (lastDirection.x >= 0)
+		{
 			renderer.flipX = false;
+			pivot.localScale = new Vector3(1,1,1);
+		}
 		else
+		{
 			renderer.flipX = true;
+			pivot.localScale = new Vector3(-1, 1, 1);
+		}
 
 		control.Move(moveVector * Time.deltaTime);
 	}
