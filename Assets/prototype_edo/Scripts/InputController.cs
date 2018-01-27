@@ -42,18 +42,18 @@ public class InputController : MonoBehaviour {
 
     public bool isFiring() {
         if (!useKeyboard) return state.Buttons.A.Equals(ButtonState.Pressed);
-        return Input.GetButtonDown("Fire_Keyboard");
+        return Input.GetButton("Fire_Keyboard");
     }
 
     public bool isDashing()
     {
         if (!useKeyboard) return state.Buttons.B.Equals(ButtonState.Pressed);
-        return Input.GetButtonDown("Dash_Keyboard");
+        return Input.GetButton("Dash_Keyboard");
     }
 
     public bool isThrowingCrow() {
         if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
-        return Input.GetButtonDown("Crow_Keyboard");
+        return Input.GetButton("Crow_Keyboard");
     }
 
 

@@ -331,7 +331,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 57.857304
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -355,13 +355,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 431599024}
-  m_LocalRotation: {x: 0.27494007, y: 0.008644421, z: 0.025960831, w: 0.96107197}
-  m_LocalPosition: {x: -13.22, y: 10.41, z: -27.58}
+  m_LocalRotation: {x: 0.274518, y: 0.01749483, z: -0.0049954196, w: 0.96140987}
+  m_LocalPosition: {x: -11.6, y: 36.4, z: -80.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 31.872002, y: 2.085, z: 3.69}
+  m_LocalEulerAnglesHint: {x: 31.872002, y: 2.085, z: 0}
 --- !u!1001 &636832177
 Prefab:
   m_ObjectHideFlags: 0
@@ -531,8 +531,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 651497442}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.417, y: -4.63, z: -2.0345}
-  m_LocalScale: {x: 13.240529, y: 0.9999998, z: 17.9157}
+  m_LocalPosition: {x: -11.632, y: -4.63, z: -1.22}
+  m_LocalScale: {x: 34.803032, y: 0.9999998, z: 10.702355}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -626,24 +626,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1220549026 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1596864140432796, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-    type: 2}
-  m_PrefabInternal: {fileID: 1220549025}
---- !u!114 &1220549027
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1220549026}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d7afb7100aa783244880e0de02683740, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useKeyboard: 0
-  playerControllerIndex: 2
 --- !u!1 &1465247578
 GameObject:
   m_ObjectHideFlags: 0
@@ -861,8 +843,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1873055044}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.211956, y: -11.144457, z: -2.0726426}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.8361, y: -11.144457, z: -1.2427}
+  m_LocalScale: {x: 2.6285229, y: 1, z: 0.59737295}
   m_Children:
   - {fileID: 1815812560}
   - {fileID: 2036050268}
@@ -1083,7 +1065,8 @@ Prefab:
       propertyPath: m_Name
       value: Player4
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2128355869 stripped

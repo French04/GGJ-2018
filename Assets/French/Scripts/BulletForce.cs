@@ -13,8 +13,10 @@ public class BulletForce : MonoBehaviour
     public BulletType myBulletType;
 
     float t;
-    public float amplitude = 15f;
-    public float frequency = 15f;
+    public float pidgeonAmplitude = 15f;
+    public float pidgeonFrequency = 15f;
+    public float raccomandataAmplitude = 15f;
+    public float raccomandataFrequency = 15f;
 
     private Vector3 leadingDirection; //Direction on which calculate trajectories perturbation
     private Vector3 effectDirection; //Actual velocity
@@ -46,13 +48,13 @@ public class BulletForce : MonoBehaviour
         t += Time.deltaTime;
         if (myBulletType == BulletType.Raccomandata)
         {
-            effectDirection.x = leadingDirection.x + amplitude * Mathf.Sin(frequency * t);
-            effectDirection.z = leadingDirection.z + amplitude * Mathf.Cos(frequency * t);
+            effectDirection.x = leadingDirection.x + raccomandataAmplitude * Mathf.Sin(raccomandataFrequency * t);
+            effectDirection.z = leadingDirection.z + raccomandataAmplitude * Mathf.Cos(raccomandataFrequency * t);
             myRigid.velocity = transform.TransformDirection(effectDirection);
         }
         else if (myBulletType == BulletType.Piccione)
         {
-            effectDirection.x = leadingDirection.x + amplitude * Mathf.Sin(frequency * t);
+            effectDirection.x = leadingDirection.x + pidgeonAmplitude * Mathf.Sin(pidgeonFrequency * t);
             effectDirection.z = leadingDirection.z;
             myRigid.velocity = transform.TransformDirection(effectDirection);
         }
