@@ -24,8 +24,9 @@ public class PickUp : MonoBehaviour {
     {
         myRender = GetComponent<MeshRenderer>();
         myCollider = GetComponent<Collider>();
-        startAnimation = enabledTime - 1f;
+        startAnimation = enabledTime - 0.5f;
         smoke = GetComponent<ParticleSystem>();
+        
     }
 
     private void Update()
@@ -38,7 +39,7 @@ public class PickUp : MonoBehaviour {
         }
         if (startAnimation <= Time.time - animationStarted && myRender.enabled == false)
         {
-            
+            smoke.Play();
         }
         
     }
