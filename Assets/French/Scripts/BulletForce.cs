@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class BulletForce : MonoBehaviour
 {
-    Rigidbody MyRigid;
+    Rigidbody myRigid;
     PlayerController player;
-    Vector3 direction;
-    public int speed = 2;
+    Vector3 myDirection;
+    public int mySpeed = 2;
+
+    public int myTeam = 0;
 
     //CharacterController myController;
 
     private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
-        MyRigid = GameObject.FindObjectOfType<Rigidbody>();
-        MyRigid.AddForce(player.lastDirection * speed * 500);
-		print(speed);
+        myRigid = GameObject.FindObjectOfType<Rigidbody>();
+        myRigid.AddForce(myDirection * mySpeed * 500);
         //myController = transform.GetComponent<CharacterController>();
         
     }
@@ -29,8 +30,10 @@ public class BulletForce : MonoBehaviour
         }
     }
 
-    public void SetSpeed(int value)
+    public void Settings(Vector3 direction, int speed, int team)
     {
-        speed = value;
+        myDirection = direction;
+        mySpeed = speed;
+        myTeam = team;
     }
 }
