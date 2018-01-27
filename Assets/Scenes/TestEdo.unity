@@ -448,6 +448,11 @@ Prefab:
       propertyPath: playerControllerIndex
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
+        type: 2}
+      propertyPath: useKeyboard
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
@@ -623,6 +628,11 @@ Prefab:
       propertyPath: playerControllerIndex
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
+        type: 2}
+      propertyPath: useKeyboard
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
@@ -708,7 +718,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4797038538496442, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -42.2
+      value: -38.18
       objectReference: {fileID: 0}
     - target: {fileID: 4797038538496442, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
       propertyPath: m_LocalRotation.x
