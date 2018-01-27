@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 	CapsuleCollider parryCollider;
 	Animator anim;
 
+	public int team; 
+
     float v;
 	float h;
     [SerializeField] float gravity;
@@ -115,8 +117,8 @@ public class PlayerController : MonoBehaviour
 				if (throwForce > 0 && carrying)
 				{
 					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
-					i.transform.rotation = Quaternion.Euler(lastDirection);
-					i.GetComponent<BulletForce>().SetSpeed(throwForce);
+					//i.transform.rotation = Quaternion.Euler(lastDirection);
+					i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team);
 					carrying = false;
 					bulletCarried = null;
 					throwForce = 0;
