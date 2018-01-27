@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
 	bool shouldCarry = false;
 	GameObject bulletPickUp;
 	GameObject pickUpGO;
-
+	Texture2D bulletIcon;
 	public GameObject bulletCarried;
 	bool canThrow = false;
 	[SerializeField] float throwOffset;
@@ -214,11 +214,12 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup, BulletForce.BulletType bulletType)
+	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup, BulletForce.BulletType bulletType, Texture2D icon)
 	{
 		shouldCarry = b;
 		bulletPickUp = obj;
 		pickUpGO = pickup;
         actualBulletType = bulletType;
+		bulletIcon = icon;
     }
 }

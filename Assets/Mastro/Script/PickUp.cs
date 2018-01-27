@@ -7,13 +7,14 @@ public class PickUp : MonoBehaviour {
 	PlayerController player;
     public GameObject bullet;
     public BulletForce.BulletType bulletType;
+	public Texture2D bulletIcon;
 
 	void OnTriggerEnter(Collider hit)
 	{
 		if (hit.CompareTag("Player"))
 		{
 			player = hit.GetComponent<PlayerController>();
-			player.SetShouldCarry(true, bullet, gameObject, bulletType);
+			player.SetShouldCarry(true, bullet, gameObject, bulletType, bulletIcon);
 		}
 	}
 
@@ -21,8 +22,7 @@ public class PickUp : MonoBehaviour {
 	{
 		if (hit.CompareTag("Player"))
 		{
-			//player = hit.GetComponent<PlayerController>();
-			player.SetShouldCarry(false, null, gameObject, bulletType);
+			player.SetShouldCarry(false, null, gameObject, bulletType, bulletIcon);
 		}
 	}
 }
