@@ -11,6 +11,7 @@ public class PickUp : MonoBehaviour {
 	public Texture2D bulletIcon;
     MeshRenderer myRender;
     Collider myCollider;
+    ParticleSystem smoke;
 
     public float enabledTime;
     float takeItMoment;
@@ -24,6 +25,7 @@ public class PickUp : MonoBehaviour {
         myRender = GetComponent<MeshRenderer>();
         myCollider = GetComponent<Collider>();
         startAnimation = enabledTime - 1f;
+        smoke = GetComponent<ParticleSystem>();
     }
 
     private void Update()
