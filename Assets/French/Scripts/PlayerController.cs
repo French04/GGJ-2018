@@ -62,29 +62,18 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
     {
-		ManageInput();
-
-		ManageMovement();
-	}
-
-
-	void ManageInput()
-	{
 		if (!parrying)
 		{
 			v = -Input.GetAxis("Vertical_P1");
 			h = -Input.GetAxis("Horizontal_P1");
 
-			if (Input.GetAxis("Dash_P1") > 0)
+			if (Input.GetAxis("Dash_P1") > 0 && !rolling && canRoll)
 			{
-				if (!rolling && canRoll)
-				{
-					rolling = true;
-					rollTimer = rollTime;
-					rollingDirection = lastDirection;
-					canRoll = false;
-					anim.SetBool("Rolling", true);
-				}
+				rolling = true;
+				rollTimer = rollTime;
+				rollingDirection = lastDirection;
+				canRoll = false;
+				print("roll");
 			}
 			else
 			{
@@ -98,7 +87,7 @@ public class PlayerController : MonoBehaviour
 					if (shouldParry)
 					{
 						parrying = true;
-						anim.SetTrigger("Parry");
+						//anima parata ecc. ecc.
 					}
 					else if (shouldCarry)
 					{
@@ -115,7 +104,7 @@ public class PlayerController : MonoBehaviour
 					{
 						if (throwForce == 0 && canThrow)
 							throwForce = 1;
-
+						
 						if (throwForce < 3)
 						{
 							if (throwStepTimer > 0)
@@ -137,6 +126,7 @@ public class PlayerController : MonoBehaviour
 				if (throwForce > 0 && carrying)
 				{
 					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
+					//i.transform.rotation = Quaternion.Euler(lastDirection);
 					i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
 					carrying = false;
 					bulletCarried = null;
@@ -148,6 +138,8 @@ public class PlayerController : MonoBehaviour
 
 
 		}
+
+		ManageMovement();
 	}
 
 
@@ -156,15 +148,8 @@ public class PlayerController : MonoBehaviour
 		moveVector = new Vector3(h, 0, v);
 		moveVector.Normalize();
 
-		if (moveVector.magnitude > 0)
-		{
+		if(moveVector.magnitude > 0)
 			lastDirection = moveVector;
-			anim.SetBool("Running", true);
-		}
-		else
-		{
-			anim.SetBool("Running", false);
-		}
 
 		if (!rolling)
 			moveVector *= moveSpeed;
@@ -174,10 +159,7 @@ public class PlayerController : MonoBehaviour
 			if (rollTimer > 0)
 				rollTimer -= Time.deltaTime;
 			else
-			{
 				rolling = false;
-				anim.SetBool("Rolling", false);
-			}
 		}
 
 		Gravity();
