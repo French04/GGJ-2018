@@ -3,13 +3,7 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-<<<<<<< HEAD
-  - Bounce
-  - Wall
-=======
-  - PickUp
->>>>>>> c241463dbf74be440684cf7c28f3708ce1b5d099
+  tags: []
   layers:
   - Default
   - TransparentFX
