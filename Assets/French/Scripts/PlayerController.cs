@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
                 if (!rolling && canRoll)
                 {
                     rolling = true;
+					particleSmoke.Play();
                     rollTimer = rollTime;
                     rollingDirection = lastDirection;
                     canRoll = false;
