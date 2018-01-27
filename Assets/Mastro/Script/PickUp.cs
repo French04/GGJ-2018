@@ -7,17 +7,12 @@ public class PickUp : MonoBehaviour {
 	PlayerController player;
     public GameObject bullet;
 
-   
-	void Start()
-	{
-		player = GameObject.FindObjectOfType<PlayerController>();
-	}
-
 
 	void OnTriggerEnter(Collider hit)
 	{
 		if (hit.CompareTag("Player"))
 		{
+			player = hit.GetComponent<PlayerController>();
 			player.SetShouldCarry(true, bullet, gameObject);
 		}
 	}
@@ -26,6 +21,7 @@ public class PickUp : MonoBehaviour {
 	{
 		if (hit.CompareTag("Player"))
 		{
+			//player = hit.GetComponent<PlayerController>();
 			player.SetShouldCarry(false, null, gameObject);
 		}
 	}
