@@ -5,10 +5,11 @@ using XInputDotNetPure;
 
 public class InputController : MonoBehaviour {
 
+    public bool useKeyboard = false;
     public PlayerIndex playerControllerIndex;
     private GamePadState state;
-    
-   
+    private float horizontal;
+    private float vertical;
     // Use this for initialization
     void Start() {
 
@@ -16,7 +17,9 @@ public class InputController : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        state = GamePad.GetState(playerControllerIndex);
+        if (!useKeyboard){
+            state = GamePad.GetState(playerControllerIndex);
+        }
         }
 
 
@@ -24,22 +27,34 @@ public class InputController : MonoBehaviour {
     //Dash
     //Prendi, lancia, parata
     public Vector3 getDirection() {
-        float horizontal = state.ThumbSticks.Left.X;
-        float vertical = state.ThumbSticks.Left.Y;
+        if (!useKeyboard)
+        {
+            horizontal = state.ThumbSticks.Left.X;
+            vertical = state.ThumbSticks.Left.Y;
+            
+        }
+        else {
+            horizontal = Input.GetAxis("Horizontal_Keyboard");
+            vertical = Input.GetAxis("Vertical_Keyboard");
+        }
+        Debug.Log(new Vector3(horizontal, 0.0f, vertical));
         return new Vector3(horizontal, 0.0f, vertical);
     }
 
     public bool isFiring() {
-        return state.Buttons.A.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.A.Equals(ButtonState.Pressed);
+        return Input.GetButtonDown("Fire_Keyboard");
     }
 
     public bool isDashing()
     {
-        return state.Buttons.B.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.B.Equals(ButtonState.Pressed);
+        return Input.GetButtonDown("Dash_Keyboard");
     }
 
     public bool isThrowingCrow() {
-        return state.Buttons.X.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
+        return Input.GetButtonDown("Crow_Keyboard");
     }
 
 

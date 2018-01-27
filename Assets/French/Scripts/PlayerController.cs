@@ -14,8 +14,8 @@ public class PlayerController : MonoBehaviour
 
 	public int team; 
 
-    float v;
-	float h;
+ 
+    InputController inputController;
     [SerializeField] float gravity;
     float vSpeed;
     [SerializeField] float maxVSpeed;
@@ -51,6 +51,7 @@ public class PlayerController : MonoBehaviour
 
     void Start ()
     {
+        inputController = GetComponent<InputController>();
         control = GetComponent<CharacterController>();
 		renderer = GetComponentInChildren<SpriteRenderer>();
 		myCollider = GetComponent<CapsuleCollider>();
@@ -65,10 +66,9 @@ public class PlayerController : MonoBehaviour
     {
 		if (!parrying)
 		{
-			v = -Input.GetAxis("Vertical_P1");
-			h = -Input.GetAxis("Horizontal_P1");
-
-			if (Input.GetAxis("Dash_P1") > 0 && !rolling && canRoll)
+			
+            moveVector = -inputController.getDirection();
+			if (inputController.isDashing() && !rolling && canRoll)
 			{
 				rolling = true;
 				rollTimer = rollTime;
@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 				canRoll = true;
 			}
 
-			if (Input.GetAxis("Fire_P1") > 0)
+			if (inputController.isFiring())
 			{
 				if (!carrying)
 				{
@@ -146,7 +146,6 @@ public class PlayerController : MonoBehaviour
 
 	void ManageMovement()
 	{
-		moveVector = new Vector3(h, 0, v);
 		moveVector.Normalize();
 
 		if(moveVector.magnitude > 0)
