@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
 	GameObject pickUpGO;
 
 	public GameObject bulletCarried;
+	bool canThrow = false;
 	[SerializeField] float throwOffset;
 
 	int throwForce = 0;
@@ -82,13 +83,15 @@ public class PlayerController : MonoBehaviour
 						carrying = true;
 						bulletCarried = bulletPickUp;
 						Destroy(pickUpGO);
+						canThrow = false;
+						shouldCarry = false;
 					}
 				}
 				else
 				{
 					if (!rolling)
 					{
-						if (throwForce == 0)
+						if (throwForce == 0 && canThrow)
 							throwForce = 1;
 						
 						if (throwForce < 3)
@@ -109,14 +112,17 @@ public class PlayerController : MonoBehaviour
 			}
 			else
 			{
-				if (throwForce > 0)
+				if (throwForce > 0 && carrying)
 				{
 					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
 					i.transform.rotation = Quaternion.Euler(lastDirection);
 					i.GetComponent<BulletForce>().SetSpeed(throwForce);
 					carrying = false;
+					bulletCarried = null;
 					throwForce = 0;
 				}
+
+				canThrow = true;
 			}
 
 
