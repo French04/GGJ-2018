@@ -6,9 +6,11 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController control;
 	SpriteRenderer renderer;
+	CapsuleCollider parryCollider;
+	Animator anim;
 
     float v;
-    float h;
+	float h;
     [SerializeField] float gravity;
     float vSpeed;
     [SerializeField] float maxVSpeed;
@@ -19,35 +21,95 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float moveSpeed;
 
 	bool rolling = false;
+	bool canRoll = true;
 	[SerializeField] float rollSpeed;
 	[SerializeField] float rollTime;
 	float rollTimer;
 
-	public GameObject bullet;
+	bool parrying = false;
+	bool shouldParry = false;
+
+	bool carrying = false;
+	bool shouldCarry = false;
+
+	public GameObject bulletCarried;
+
+	int throwForce = 0;
+	[SerializeField] float throwStepTime = 1f;
+	float throwStepTimer = 0;
 
     void Start ()
     {
         control = GetComponent<CharacterController>();
-		renderer = GetComponent<SpriteRenderer>();
+		renderer = GetComponentInChildren<SpriteRenderer>();
+		parryCollider = GetComponentInChildren<CapsuleCollider>();
+		anim = GetComponentInChildren<Animator>();
 
 		lastDirection = new Vector3(-1,0,0);
+		throwStepTimer = throwStepTime;
 	}
 	
 	void Update ()
     {
-        v = -Input.GetAxis("Vertical_P1");
-		h = -Input.GetAxis("Horizontal_P1");
-
-		if (Input.GetAxis("Dash_P1") > 0 && !rolling)
+		if (!parrying)
 		{
-			rolling = true;
-			rollTimer = rollTime;
-			rollingDirection = lastDirection;
-		}
+			v = -Input.GetAxis("Vertical_P1");
+			h = -Input.GetAxis("Horizontal_P1");
 
-		if (Input.GetAxis("Fire_P1") > 0 && !rolling)
-		{
-			Instantiate(bullet, transform.position, transform.rotation);
+			if (Input.GetAxis("Dash_P1") > 0 && !rolling && canRoll)
+			{
+				rolling = true;
+				rollTimer = rollTime;
+				rollingDirection = lastDirection;
+			}
+
+			if (Input.GetAxis("Fire_P1") > 0)
+			{
+				if (!carrying)
+				{
+					if (shouldParry)
+					{
+						parrying = true;
+						//anima parata ecc. ecc.
+					}
+					else if (shouldCarry)
+					{
+						carrying = true;
+						//bulletCarried = ...;
+						//Despawna oggetto per terra
+					}
+				}
+				else
+				{
+					if (!rolling)
+					{
+						if (throwForce < 3)
+						{
+							if (throwStepTimer > 0)
+							{
+								throwStepTimer -= Time.deltaTime;
+							}
+							else
+							{
+								throwForce++;
+								throwStepTimer = throwStepTime;
+								print("PowerUp!");
+							}
+						}
+					}
+				}
+			}
+			else
+			{
+				if (throwForce > 0)
+				{
+					Instantiate(bulletCarried, transform.position, transform.rotation);
+					carrying = false;
+					throwForce = 0;
+				}
+			}
+
+
 		}
 
 		ManageMovement();
@@ -75,6 +137,11 @@ public class PlayerController : MonoBehaviour
 
 		Gravity();
 
+		if (lastDirection.x >= 0)
+			renderer.flipX = false;
+		else
+			renderer.flipX = true;
+
 		control.Move(moveVector * Time.deltaTime);
 	}
 
@@ -88,4 +155,17 @@ public class PlayerController : MonoBehaviour
         }
 		moveVector.y = vSpeed;
     }
+
+
+	public void SetShouldParry(bool b)
+	{
+		shouldParry = b;
+	}
+
+
+	public void SetShouldCarry(bool b, GameObject obj)
+	{
+		shouldCarry = b;
+		bulletCarried = obj;
+	}
 }
