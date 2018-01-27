@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     CharacterController control;
 	SpriteRenderer renderer;
+	CapsuleCollider myCollider;
 	CapsuleCollider parryCollider;
 	Animator anim;
 
@@ -31,6 +32,8 @@ public class PlayerController : MonoBehaviour
 
 	bool carrying = false;
 	bool shouldCarry = false;
+	GameObject bulletPickUp;
+	GameObject pickUpGO;
 
 	public GameObject bulletCarried;
 	[SerializeField] float throwOffset;
@@ -43,6 +46,7 @@ public class PlayerController : MonoBehaviour
     {
         control = GetComponent<CharacterController>();
 		renderer = GetComponentInChildren<SpriteRenderer>();
+		myCollider = GetComponent<CapsuleCollider>();
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
 
@@ -76,8 +80,8 @@ public class PlayerController : MonoBehaviour
 					else if (shouldCarry)
 					{
 						carrying = true;
-						//bulletCarried = ...;
-						//Despawna oggetto per terra
+						bulletCarried = bulletPickUp;
+						Destroy(pickUpGO);
 					}
 				}
 				else
@@ -169,9 +173,10 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	public void SetShouldCarry(bool b, GameObject obj)
+	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup)
 	{
 		shouldCarry = b;
-		bulletCarried = obj;
+		bulletPickUp = obj;
+		pickUpGO = pickup;
 	}
 }

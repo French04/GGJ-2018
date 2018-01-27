@@ -11,11 +11,12 @@ public class BulletForce : MonoBehaviour
 
     //CharacterController myController;
 
-    private void OnEnable()
+    private void Start()
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         MyRigid = GameObject.FindObjectOfType<Rigidbody>();
-        MyRigid.AddForce(player.lastDirection * speed);
+        MyRigid.AddForce(player.lastDirection * speed * 500);
+		print(speed);
         //myController = transform.GetComponent<CharacterController>();
         
     }

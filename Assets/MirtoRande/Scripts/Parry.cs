@@ -18,10 +18,10 @@ public class Parry : MonoBehaviour {
 		if(hit.CompareTag("Bullet"))
 			player.SetShouldParry(true);
 		
-		if (hit.CompareTag("PickUp"))
+		/*if (hit.CompareTag("PickUp"))
 		{
-			player.SetShouldCarry(true, hit.GetComponent<PickUp>().GetBulletGO());
-		}
+			player.SetShouldCarry(true, hit.GetComponent<PickUp>().GetBulletGO(), gameObject);
+		}*/
 	}
 
 
@@ -30,9 +30,9 @@ public class Parry : MonoBehaviour {
 		if (hit.CompareTag("Bullet"))
 			player.SetShouldParry(false);
 
-		if (hit.CompareTag("PickUp"))
+		/*if (hit.CompareTag("PickUp"))
 		{
-			player.SetShouldCarry(false, null);
-		}
+			player.SetShouldCarry(false, null, gameObject);
+		}*/
 	}
 }
