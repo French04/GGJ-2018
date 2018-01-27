@@ -51,6 +51,10 @@ public class PlayerController : MonoBehaviour
 
     BulletForce.BulletType actualBulletType;
 
+	[SerializeField] GameObject charge1;
+	[SerializeField] GameObject charge2;
+	ParticleSystem particleSmoke;
+
     void Start ()
     {
         inputController = GetComponent<InputController>();
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
 		myCollider = GetComponent<CapsuleCollider>();
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
+		particleSmoke = GetComponent<ParticleSystem>();
 
 		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
@@ -139,13 +144,17 @@ public class PlayerController : MonoBehaviour
                 }
 
                 moveVector = -inputController.getDirection();
-                if (inputController.isDashing() && !rolling && canRoll)
+                if (inputController.isDashing())
                 {
-                    rolling = true;
-                    rollTimer = rollTime;
-                    rollingDirection = lastDirection;
-                    canRoll = false;
-                    print("roll");
+					if (!rolling && canRoll)
+					{
+						rolling = true;
+						particleSmoke.Play();
+						rollTimer = rollTime;
+						rollingDirection = lastDirection;
+						canRoll = false;
+						anim.SetBool("Rolling", true);
+					}
                 }
                 else
                 {
@@ -204,6 +213,7 @@ public class PlayerController : MonoBehaviour
                         carrying = false;
                         bulletCarried = null;
                         throwForce = 0;
+						anim.SetTrigger("Throw");
                     }
 
                     canThrow = true;
@@ -249,6 +259,8 @@ public class PlayerController : MonoBehaviour
 			{
 				rolling = false;
 				anim.SetBool("Rolling", false);
+				if(particleSmoke.isPlaying)
+					particleSmoke.Stop();
 			}
 		}
 
