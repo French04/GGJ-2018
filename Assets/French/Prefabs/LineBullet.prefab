@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23982286968540994}
   - component: {fileID: 114187033399657772}
   - component: {fileID: 54558438225957426}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LineBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee80d7581345443a71cb32316c02b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 500
+  mySpeed: 2
+  myTeam: 0
+  myBulletType: 0
+  amplitude: 10
+  frequency: 7
 --- !u!135 &135249130690122502
 SphereCollider:
   m_ObjectHideFlags: 1

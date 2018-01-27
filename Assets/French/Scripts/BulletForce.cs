@@ -16,6 +16,8 @@ public class BulletForce : MonoBehaviour
     public float amplitude = 15f;
     public float frequency = 15f;
 
+    private Vector3 leadingDirection; //Direction on which calculate trajectories perturbation
+    private Vector3 effectDirection; //Actual velocity
     //CharacterController myController;
 
     public enum BulletType
@@ -31,28 +33,24 @@ public class BulletForce : MonoBehaviour
         player = GameObject.FindObjectOfType<PlayerController>();
         myRigid = GameObject.FindObjectOfType<Rigidbody>();
 
-        if(myBulletType == BulletType.Lettera)
-        {
-            myRigid.velocity = myDirection * mySpeed * 10;
-        }        
+        myRigid.velocity = myDirection * mySpeed * 10;
+        leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
     }
 
     void FixedUpdate()
     {
-        if(myBulletType == BulletType.Raccomandata)
+        t += Time.deltaTime;
+        if (myBulletType == BulletType.Raccomandata)
         {
-            t += Time.deltaTime;
-            var locVel = transform.InverseTransformDirection(myRigid.velocity);
-            locVel.x = amplitude * Mathf.Sin(frequency * t);
-            locVel.z = amplitude * Mathf.Cos(frequency * t);
-            myRigid.velocity = transform.TransformDirection(locVel);
+            effectDirection.x = leadingDirection.x + amplitude * Mathf.Sin(frequency * t);
+            effectDirection.z = leadingDirection.z + amplitude * Mathf.Cos(frequency * t);
+            myRigid.velocity = transform.TransformDirection(effectDirection);
         }
         else if (myBulletType == BulletType.Piccione)
         {
-            t += Time.deltaTime;
-            var locVel = transform.InverseTransformDirection(myRigid.velocity);
-            locVel.x = amplitude * Mathf.Sin(frequency * t);
-            myRigid.velocity = transform.TransformDirection(locVel);
+            effectDirection.x = leadingDirection.x + amplitude * Mathf.Sin(frequency * t);
+            effectDirection.z = leadingDirection.z;
+            myRigid.velocity = transform.TransformDirection(effectDirection);
         }
     }
 
@@ -62,6 +60,12 @@ public class BulletForce : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //After a collision on the wall, update the leading direction
+        leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
     }
 
     public void Settings(Vector3 direction, int speed, int team, BulletType bulletType)
