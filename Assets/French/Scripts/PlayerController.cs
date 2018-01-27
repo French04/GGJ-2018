@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
 	bool shouldCarry = false;
 
 	public GameObject bulletCarried;
+	[SerializeField] float throwOffset;
 
 	int throwForce = 0;
 	[SerializeField] float throwStepTime = 1f;
@@ -83,6 +84,9 @@ public class PlayerController : MonoBehaviour
 				{
 					if (!rolling)
 					{
+						if (throwForce == 0)
+							throwForce = 1;
+						
 						if (throwForce < 3)
 						{
 							if (throwStepTimer > 0)
@@ -103,7 +107,9 @@ public class PlayerController : MonoBehaviour
 			{
 				if (throwForce > 0)
 				{
-					Instantiate(bulletCarried, transform.position, transform.rotation);
+					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
+					i.transform.rotation = Quaternion.Euler(lastDirection);
+					i.GetComponent<BulletForce>.SetSpeed(throwForce);
 					carrying = false;
 					throwForce = 0;
 				}
