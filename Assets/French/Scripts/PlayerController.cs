@@ -45,6 +45,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float throwStepTime = 1f;
 	float throwStepTimer = 0;
 
+    BulletForce.BulletType actualBulletType;
+
     void Start ()
     {
         control = GetComponent<CharacterController>();
@@ -118,7 +120,7 @@ public class PlayerController : MonoBehaviour
 				{
 					GameObject i = Instantiate(bulletCarried, transform.position + lastDirection * throwOffset, transform.rotation);
 					//i.transform.rotation = Quaternion.Euler(lastDirection);
-					i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team);
+					i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
 					carrying = false;
 					bulletCarried = null;
 					throwForce = 0;
@@ -181,10 +183,11 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup)
+	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup, BulletForce.BulletType bulletType)
 	{
 		shouldCarry = b;
 		bulletPickUp = obj;
 		pickUpGO = pickup;
-	}
+        actualBulletType = bulletType;
+    }
 }
