@@ -62,7 +62,7 @@ public class Menu : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
-        Debug.Log(selectorButton);
+        Debug.Log(inputController.isFiring());
 
         if (inputController.getDirection().z == 0)
         {
