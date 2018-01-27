@@ -17,7 +17,7 @@ public class BulletForce : MonoBehaviour
     {
         player = GameObject.FindObjectOfType<PlayerController>();
         myRigid = GameObject.FindObjectOfType<Rigidbody>();
-        myRigid.AddForce(myDirection * mySpeed * 500);
+        myRigid.velocity = myDirection * mySpeed * 500;
         //myController = transform.GetComponent<CharacterController>();
         
     }
@@ -35,5 +35,10 @@ public class BulletForce : MonoBehaviour
         myDirection = direction;
         mySpeed = speed;
         myTeam = team;
+    }
+
+    public int GetTeam()
+    {
+        return myTeam;
     }
 }
