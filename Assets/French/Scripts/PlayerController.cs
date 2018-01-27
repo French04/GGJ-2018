@@ -11,11 +11,11 @@ public class PlayerController : MonoBehaviour
 	Animator anim;
 	[SerializeField] Transform pivot;
 	[SerializeField] Transform bulletPoint;
-    
 
-	public int team; 
 
- 
+	public int team;
+
+
     InputController inputController;
     [SerializeField] float gravity;
     float vSpeed;
@@ -63,20 +63,22 @@ public class PlayerController : MonoBehaviour
 		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
 	}
-	
-	void Update ()
+
+    void Update()
     {
         if (!parrying)
         {
-
             moveVector = -inputController.getDirection();
-            if (inputController.isDashing() && !rolling && canRoll)
+            if (inputController.isDashing())
             {
-                rolling = true;
-                rollTimer = rollTime;
-                rollingDirection = lastDirection;
-                canRoll = false;
-                print("roll");
+                if (!rolling && canRoll)
+                {
+                    rolling = true;
+                    rollTimer = rollTime;
+                    rollingDirection = lastDirection;
+                    canRoll = false;
+                    anim.SetBool("Rolling", true);
+                }
             }
             else
             {
@@ -87,19 +89,18 @@ public class PlayerController : MonoBehaviour
             {
                 if (!carrying)
                 {
-
-                    if (shouldCarry)
+                    if (shouldParry)
+                    {
+                        parrying = true;
+                        anim.SetTrigger("Parry");
+                    }
+                    else if (shouldCarry)
                     {
                         carrying = true;
                         bulletCarried = bulletPickUp;
                         Destroy(pickUpGO);
                         canThrow = false;
                         shouldCarry = false;
-                    }
-                    else
-                    {
-                        parrying = true;
-                        DoParry(parrying);
                     }
                 }
                 else
@@ -137,29 +138,105 @@ public class PlayerController : MonoBehaviour
                     throwForce = 0;
                 }
 
-                canThrow = true;
+                moveVector = -inputController.getDirection();
+                if (inputController.isDashing() && !rolling && canRoll)
+                {
+                    rolling = true;
+                    rollTimer = rollTime;
+                    rollingDirection = lastDirection;
+                    canRoll = false;
+                    print("roll");
+                }
+                else
+                {
+                    canRoll = true;
+                }
+
+                if (inputController.isFiring())
+                {
+                    if (!carrying)
+                    {
+
+                        if (shouldCarry)
+                        {
+                            carrying = true;
+                            bulletCarried = bulletPickUp;
+                            Destroy(pickUpGO);
+                            canThrow = false;
+                            shouldCarry = false;
+                        }
+                        else
+                        {
+                            parrying = true;
+                            DoParry(parrying);
+                        }
+                    }
+                    else
+                    {
+                        if (!rolling)
+                        {
+                            if (throwForce == 0 && canThrow)
+                                throwForce = 1;
+
+                            if (throwForce < 3)
+                            {
+                                if (throwStepTimer > 0)
+                                {
+                                    throwStepTimer -= Time.deltaTime;
+                                }
+                                else
+                                {
+                                    throwForce++;
+                                    throwStepTimer = throwStepTime;
+                                    print("PowerUp!");
+                                }
+                            }
+                        }
+                    }
+                }
+                else
+                {
+                    if (throwForce > 0 && carrying)
+                    {
+                        GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
+                        //i.transform.rotation = Quaternion.Euler(lastDirection);
+                        i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
+                        carrying = false;
+                        bulletCarried = null;
+                        throwForce = 0;
+                    }
+
+                    canThrow = true;
+                }
+
+
+            }
+
+            if (!inputController.isFiring())
+            {
+                parrying = false;
+                DoParry(false);
             }
 
 
-        }
-        
-        if (!inputController.isFiring()) {
-            parrying = false;
-            DoParry(false);
-        }
-        
 
-        
-		ManageMovement();
-	}
-
+            ManageMovement();
+        }
+    }
 
 	void ManageMovement()
 	{
 		moveVector.Normalize();
 
-		if(moveVector.magnitude > 0)
+		if (moveVector.magnitude > 0)
+		{
 			lastDirection = moveVector;
+			anim.SetBool("Running", true);
+		}
+		else
+		{
+			anim.SetBool("Running", false);
+		}
 
 		if (!rolling)
 			moveVector *= moveSpeed;
@@ -169,7 +246,10 @@ public class PlayerController : MonoBehaviour
 			if (rollTimer > 0)
 				rollTimer -= Time.deltaTime;
 			else
+			{
 				rolling = false;
+				anim.SetBool("Rolling", false);
+			}
 		}
 
 		Gravity();
@@ -219,9 +299,9 @@ public class PlayerController : MonoBehaviour
         //TODO: Parry animation
         if (state && !lastParryState)
         {
-           
+
             anim.SetTrigger("Parry");
-            
+
         }
         else if (!state && lastParryState) {
             //Parry off
