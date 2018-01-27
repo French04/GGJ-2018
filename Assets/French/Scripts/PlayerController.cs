@@ -33,10 +33,10 @@ public class PlayerController : MonoBehaviour
 	
 	void Update ()
     {
-        v = -Input.GetAxis("Vertical");
-        h = -Input.GetAxis("Horizontal");
+        v = -Input.GetAxis("Vertical_P1");
+		h = -Input.GetAxis("Horizontal_P1");
 
-		if (Input.GetAxis("Jump") > 0 && !rolling)
+		if (Input.GetAxis("Dash_P1") > 0 && !rolling)
 		{
 			rolling = true;
 			rollTimer = rollTime;
