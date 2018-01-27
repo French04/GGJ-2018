@@ -4,4 +4,10 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: cdfb8a10a1eea6f4788efd4a657c8faa
+  - enabled: 1
+    path: Assets/Scenes/MirtoRande.unity
+    guid: 213fdce40b678d84399ef1433b5eef5d
