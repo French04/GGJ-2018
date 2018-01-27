@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float maxVSpeed;
 
     Vector3 moveVector;
-	Vector3 lastDirection;
+	[HideInInspector] public Vector3 lastDirection;
 	[SerializeField] float moveSpeed;
 
 	bool rolling = false;
@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
 		moveVector = new Vector3(h, 0, v);
 		moveVector.Normalize();
 
-		if(moveVector.magnitude > 0)
+		if(moveVector.magnitude > 0 && !rolling)
 			lastDirection = moveVector;
 
 		if (!rolling)
