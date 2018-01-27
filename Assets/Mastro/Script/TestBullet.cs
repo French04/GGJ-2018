@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class TestBullet : MonoBehaviour {
 
-	// Use this for initialization
+    public Transform hand;
+
+    Transform myTransform;
+
+
+
 	void Start () {
-		
+        
 	}
 	
-	// Update is called once per frame
+
 	void Update () {
-		
-	}
+			}
+    
+    
+
 }
