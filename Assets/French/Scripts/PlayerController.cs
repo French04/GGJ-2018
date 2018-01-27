@@ -66,15 +66,17 @@ public class PlayerController : MonoBehaviour
     {
 		if (!parrying)
 		{
-			
             moveVector = -inputController.getDirection();
-			if (inputController.isDashing() && !rolling && canRoll)
+			if (inputController.isDashing())
 			{
-				rolling = true;
-				rollTimer = rollTime;
-				rollingDirection = lastDirection;
-				canRoll = false;
-				print("roll");
+				if (!rolling && canRoll)
+				{
+					rolling = true;
+					rollTimer = rollTime;
+					rollingDirection = lastDirection;
+					canRoll = false;
+					anim.SetBool("Rolling", true);
+				}
 			}
 			else
 			{
@@ -88,7 +90,7 @@ public class PlayerController : MonoBehaviour
 					if (shouldParry)
 					{
 						parrying = true;
-						//anima parata ecc. ecc.
+						anim.SetTrigger("Parry");
 					}
 					else if (shouldCarry)
 					{
@@ -148,8 +150,15 @@ public class PlayerController : MonoBehaviour
 	{
 		moveVector.Normalize();
 
-		if(moveVector.magnitude > 0)
+		if (moveVector.magnitude > 0)
+		{
 			lastDirection = moveVector;
+			anim.SetBool("Running", true);
+		}
+		else
+		{
+			anim.SetBool("Running", false);
+		}
 
 		if (!rolling)
 			moveVector *= moveSpeed;
@@ -159,7 +168,10 @@ public class PlayerController : MonoBehaviour
 			if (rollTimer > 0)
 				rollTimer -= Time.deltaTime;
 			else
+			{
 				rolling = false;
+				anim.SetBool("Rolling", false);
+			}
 		}
 
 		Gravity();
