@@ -18,7 +18,6 @@ public class Parry : MonoBehaviour {
 	{
 		if(hit.CompareTag("Bullet") && player.GetIsParrying()) 
 		{
-			Debug.Log("parata");
             player.SetShouldParry(true);
             Destroy(hit.gameObject);
 			Instantiate(hitSpark, hit.gameObject.transform.position, Quaternion.identity);

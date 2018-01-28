@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class GameScore : MonoBehaviour {
 
+	public AudioSource audioSource;
+	[SerializeField] AudioClip[] audioClips;
+
 	[SerializeField] float gameTime;
 	[SerializeField] float timeLimit;
 	[SerializeField] int teamOneScore = 0;
@@ -27,6 +30,7 @@ public class GameScore : MonoBehaviour {
 	void Start()
 	{
         playerController = FindObjectsOfType<PlayerController>();
+		audioSource = GetComponent<AudioSource>();
         winTeam1 = GameObject.Find("GameOver").transform.GetChild(0).gameObject;
         winTeam2 = GameObject.Find("GameOver").transform.GetChild(1).gameObject;
         winTeam1.SetActive(false);
@@ -55,12 +59,15 @@ public class GameScore : MonoBehaviour {
 			{
 				case 0:
 					uiText.text = "Ready?";
+					audioSource.PlayOneShot(audioClips[0]);
 					break;
 				case 1:
 					uiText.text = "Set";
+					audioSource.PlayOneShot(audioClips[0]);
 					break;
 				case 2:
 					uiText.text = "Go!";
+					audioSource.PlayOneShot(audioClips[1]);
 					break;
 				case 3:
 					uiText.text = "";
