@@ -49,7 +49,7 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (!gameInPlay)
+        if (!gameInPlay && inputController != null)
         {
              
             //moveselelector reset
