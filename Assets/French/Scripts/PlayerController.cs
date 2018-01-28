@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,6 +65,8 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canMove;
 
+    GameScore gameScore;
+
     void Start ()
     {
         canMove = true;
@@ -79,6 +82,8 @@ public class PlayerController : MonoBehaviour
 
 		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
+
+        gameScore = FindObjectOfType<GameScore>();
 	}
 
 	void Update()
@@ -89,6 +94,10 @@ public class PlayerController : MonoBehaviour
 		    ManageMovement();
         }
         
+        if(inputController.isPause() && gameScore.gameOver)
+        {
+            EditorSceneManager.LoadScene(1);
+        }
     }
 
 
