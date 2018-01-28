@@ -188,24 +188,9 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: useKeyboard
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1596864140432796, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
       propertyPath: m_Name
       value: Player2_team1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: playerControllerIndex
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114037377220418330, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: team
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
