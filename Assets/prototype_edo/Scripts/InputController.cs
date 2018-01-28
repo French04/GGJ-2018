@@ -56,5 +56,11 @@ public class InputController : MonoBehaviour {
         return Input.GetButton("Crow_Keyboard");
     }
 
-
+    public bool isPause()
+    {
+        if (!useKeyboard)
+            return state.Buttons.Start.Equals(ButtonState.Pressed);
+        else
+            return Input.GetButton("Submit");
+    }
 }
