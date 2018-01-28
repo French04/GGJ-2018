@@ -151,6 +151,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClips:
+<<<<<<< HEAD
   - {fileID: 8300000, guid: e7624716b613cf24eafb41948545d42b, type: 3}
   - {fileID: 8300000, guid: 9e5dea5efb224d44a90ae105c1419e6a, type: 3}
   - {fileID: 8300000, guid: a8e9723ec2cfd1b46865c3999dfd1b4e, type: 3}
@@ -160,6 +161,17 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f64ebbf342465f342b9802088c6a59a4, type: 3}
   - {fileID: 8300000, guid: abe4d9a3bb056b64d9bb235edf56842d, type: 3}
   - {fileID: 8300000, guid: b2b502a2d6b7dba479fbcbf9a673730a, type: 3}
+=======
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+>>>>>>> 81ee0ae510c3cbdbf08281d79ed6daa1a7da13c3
   mySpeed: 6
   speedMult: 5
   speedBase: 10
