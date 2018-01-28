@@ -7,7 +7,7 @@ using UnityEditor.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     InputController inputController;
-    GameObject pausePanel;
+    public GameObject pausePanel;
     GameObject selector;
     Button[] pauseButton;
 
@@ -20,6 +20,8 @@ public class PauseMenu : MonoBehaviour
     int selectorButton = 0;
 
     PlayerController[] playerController = new PlayerController[4];
+
+    bool canPause = false;
 
     // Use this for initialization
     void Start()
@@ -37,9 +39,11 @@ public class PauseMenu : MonoBehaviour
             pauseButton[i - 1] = pausePanel.transform.GetChild(i).GetComponent<Button>();
         }
 
-        pausePanel.SetActive(false);
+        //pausePanel.SetActive(false);
 
         playerController = FindObjectsOfType<PlayerController>();
+
+        StartCoroutine(PauseEnabler());
     }
 
     // Update is called once per frame
@@ -111,31 +115,39 @@ public class PauseMenu : MonoBehaviour
     
     public void PauseSwitch()
     {
-        if (!gameInPlay)
+        if (canPause) //bug fixing for start
         {
-            Debug.Log("Turn Off Pause menu");
-            //Turn Off Pause Menu
-            for (int i = 0; i < playerController.Length; i++)
+            if (!gameInPlay)
             {
-                playerController[i].canMove = true;
+                Debug.Log("Turn Off Pause menu");
+                //Turn Off Pause Menu
+                for (int i = 0; i < playerController.Length; i++)
+                {
+                    playerController[i].canMove = true;
+                }
+                pausePanel.SetActive(false);
+                Time.timeScale = 1;
             }
-            pausePanel.SetActive(false);
-            Time.timeScale = 1;
-        }
-            
-        else
-        {
-            Debug.Log("Turn On Pause menu");
-            //Turn On Pause menu
-            for (int i = 0; i < playerController.Length; i++)
+            else
             {
-                playerController[i].canMove = false;
-            }
-            pausePanel.SetActive(true);
-            Time.timeScale = 0;
+                Debug.Log("Turn On Pause menu");
+                //Turn On Pause menu
+                for (int i = 0; i < playerController.Length; i++)
+                {
+                    playerController[i].canMove = false;
+                }
+                pausePanel.SetActive(true);
+                Time.timeScale = 0;
 
-        }
-        gameInPlay = !gameInPlay;
+            }
+            gameInPlay = !gameInPlay;
         
+        }
+    }
+
+    IEnumerator PauseEnabler()
+    {
+        yield return new WaitForSeconds(3);
+        canPause = true;
     }
 }
