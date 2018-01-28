@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.43688625, g: 0.4845392, b: 0.5647959, a: 1}
+  m_IndirectSpecularColor: {r: 0.43688503, g: 0.4845369, b: 0.56479317, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -1208,7 +1208,7 @@ TextMesh:
   m_TabSize: 4
   m_FontSize: 60
   m_FontStyle: 0
-  m_RichText: 1
+  m_RichText: 0
   m_Font: {fileID: 12800000, guid: 9ada84f3203f64c5394b69bfd9075d88, type: 3}
   m_Color:
     serializedVersion: 2
@@ -1304,6 +1304,7 @@ MonoBehaviour:
   timer: {fileID: 1969799378}
   uiText: {fileID: 1904289101}
   interval: 1
+  highightSize: 2
   gameOver: 0
 --- !u!4 &879910259
 Transform:
@@ -2005,7 +2006,7 @@ Prefab:
     - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
         type: 2}
       propertyPath: useKeyboard
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
         type: 2}
