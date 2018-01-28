@@ -29,6 +29,8 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] float rollSpeed;
 	[SerializeField] float rollTime;
 	float rollTimer;
+	[SerializeField] float rollCoolDownTime;
+	float rollCoolDownTimer;
 
 	bool parrying = false;
 	[SerializeField] float parryTime;
@@ -91,10 +93,19 @@ public class PlayerController : MonoBehaviour
 			{
 				Dash();
 			}
-			else
+
+			if (!rolling)
 			{
-				canRoll = true;
+				if (rollCoolDownTimer > 0)
+				{
+					rollCoolDownTimer -= Time.deltaTime;
+				}
+				else
+				{
+					canRoll = true;
+				}
 			}
+
 
 			if (inputController.isFiring())
 			{
@@ -115,10 +126,11 @@ public class PlayerController : MonoBehaviour
 				Throw();
 			}
 
-			if (inputController.isParrying())
+			if (inputController.isParrying() && !carrying)
 			{
 				Parry(true);
 			}
+
 		}
 		else
 		{
@@ -145,6 +157,7 @@ public class PlayerController : MonoBehaviour
 			rollingDirection = lastDirection;
 			canRoll = false;
 			anim.SetBool("Rolling", true);
+			rollCoolDownTimer = rollCoolDownTime;
 		}
 	}
 
