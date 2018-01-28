@@ -113,7 +113,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySpeed: 6
   speedMult: 10
-  myTeam: 0
+  lifeTime: 5
+  myTeam: 1
   myBulletType: 0
   pidgeonAmplitude: 15
   pidgeonFrequency: 15

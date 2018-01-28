@@ -140,6 +140,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4412702340903302}
   - component: {fileID: 136533030305496440}
+  - component: {fileID: 114311441218988280}
   m_Layer: 0
   m_Name: ParryCollider
   m_TagString: Untagged
@@ -318,6 +319,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useKeyboard: 1
   playerControllerIndex: 0
+--- !u!114 &114311441218988280
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939429981709532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6df04bf051070463f85a6a1690420622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114367631331917598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3839,7 +3851,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 832408545
+  randomSeed: -1339389121
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10742,7 +10754,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 78c7d90f74c4e440d9cac7293ffbf926, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -10750,7 +10762,7 @@ SpriteRenderer:
   m_Size: {x: 8, y: 5.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
 --- !u!212 &212408690555204228
 SpriteRenderer:
