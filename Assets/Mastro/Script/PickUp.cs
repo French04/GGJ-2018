@@ -29,7 +29,7 @@ public class PickUp : MonoBehaviour {
 
     private void Update()
     {
-        if (enabledTime <= Time.time - takeItMoment && myRender.enabled == false)
+        if (enabledTime <= Time.time - takeItMoment && isPickUppable == false)
         {
             myCollider.enabled = true;
             myRender.enabled = true;            
@@ -46,25 +46,19 @@ public class PickUp : MonoBehaviour {
             player = hit.GetComponent<PlayerController>();
             control = hit.GetComponent<InputController>();
 
-            if(isPickUppable)
-			    player.SetShouldCarry(true, bullet, null, bulletType, bulletIcon);
-
-            if (player.carrying == false && control.isFiring())
+            //if in shooting and i don't have a bullet
+            if (control.isFiring() && player.carrying == false)
             {
+                //if the pickup is grabbable
+                if(isPickUppable)
+			        player.SetShouldCarry(true, bullet, null, bulletType, bulletIcon);
+
                 myRender.enabled = false;
                 myCollider.enabled = false;
                 isPickUppable = false;
-                takeItMoment = Time.time;               
+                takeItMoment = Time.time;                           
             }
 
-		}
-	}
-
-	void OnTriggerExit(Collider hit)
-	{
-		if (hit.CompareTag("Player"))
-		{
-			player.SetShouldCarry(false, null, gameObject, bulletType, bulletIcon);
 		}
 	}
 }
