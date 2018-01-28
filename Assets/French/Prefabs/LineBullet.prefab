@@ -69,6 +69,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49ee80d7581345443a71cb32316c02b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   mySpeed: 6
   speedMult: 5
   speedBase: 10
