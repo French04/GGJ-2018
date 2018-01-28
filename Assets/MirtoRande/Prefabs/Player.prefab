@@ -235,7 +235,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1596864140432796}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.1, y: 1.95, z: 0}
+  m_LocalPosition: {x: 20, y: 1.94, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4412702340903302}
@@ -374,7 +374,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 4bc68ac023b004f819b1941fa47e775e, type: 3}
   - {fileID: 8300000, guid: 6f6c588c6730d41c7b03658d51880dca, type: 3}
   - {fileID: 8300000, guid: b224340a36a4741019c2136ac9ac6004, type: 3}
-  team: 2
+  team: 1
   gravity: 2
   maxVSpeed: 16
   lastDirection: {x: 0, y: 0, z: 0}
@@ -404,8 +404,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7afb7100aa783244880e0de02683740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useKeyboard: 0
-  playerControllerIndex: 0
+  useKeyboard: 1
+  playerControllerIndex: 1
 --- !u!114 &114311441218988280
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,7 +485,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3891,7 +3891,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -7252,7 +7252,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
