@@ -1330,6 +1330,8 @@ MonoBehaviour:
   scoreboard1: {fileID: 839548273}
   scoreboard2: {fileID: 2006499186}
   timer: {fileID: 1969799378}
+  uiText: {fileID: 1904289101}
+  interval: 1
 --- !u!4 &879910259
 Transform:
   m_ObjectHideFlags: 0
