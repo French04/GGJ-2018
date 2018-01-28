@@ -2418,11 +2418,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114037377220418330, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: audioClips.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4797038538496442, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
       propertyPath: m_LocalPosition.x
       value: -6.1
@@ -2455,11 +2450,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 114037377220418330, guid: 40d85151d8696451c80c0bdeecb9ba6d,
+    - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
         type: 2}
-      propertyPath: audioClips.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 4bc68ac023b004f819b1941fa47e775e, type: 3}
+      propertyPath: useKeyboard
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
