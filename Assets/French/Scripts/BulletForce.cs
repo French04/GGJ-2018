@@ -43,6 +43,7 @@ public class BulletForce : MonoBehaviour
         leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
 		myRigid.velocity = myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
+		transform.rotation = Quaternion.Euler(-60, 0, 0);
     }
 
     void FixedUpdate()
@@ -59,7 +60,8 @@ public class BulletForce : MonoBehaviour
 
         else if (myBulletType == BulletType.Piccione)
         {
-			//myRigid.rotation += pidgeonAmplitude;
+			myRigid.velocity = myDirection * mySpeed * speedMult;
+			myRigid.velocity += new Vector3(myDirection.x, 0, myDirection.z) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
         }
     }
 
@@ -93,6 +95,7 @@ public class BulletForce : MonoBehaviour
         myTeam = team;
         myBulletType = bulletType;
 		icon = s;
+		renderer = GetComponent<SpriteRenderer>();
 		renderer.sprite = icon;
     }
 

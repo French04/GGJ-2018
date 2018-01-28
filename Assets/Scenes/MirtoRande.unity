@@ -570,6 +570,12 @@ Prefab:
       propertyPath: bulletType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 09db5c5ae270f4dd799a9ee1d2395c92,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -638,7 +644,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 472633412}
   m_LocalRotation: {x: 0.2588191, y: 0, z: 0, w: 0.9659258}
-  m_LocalPosition: {x: -0.0000011325, y: 4.4, z: 16.536}
+  m_LocalPosition: {x: -0.0000011325, y: 4.4, z: 18.5}
   m_LocalScale: {x: 6.5, y: 1, z: 0.8}
   m_Children: []
   m_Father: {fileID: 0}
@@ -991,6 +997,12 @@ Prefab:
       propertyPath: bulletType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 78c7d90f74c4e440d9cac7293ffbf926,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1472,6 +1484,12 @@ Prefab:
       propertyPath: bulletType
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 09db5c5ae270f4dd799a9ee1d2395c92,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1707,6 +1725,12 @@ Prefab:
       propertyPath: bulletType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 78c7d90f74c4e440d9cac7293ffbf926,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
