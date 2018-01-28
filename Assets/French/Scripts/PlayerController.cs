@@ -10,33 +10,33 @@ public class PlayerController : MonoBehaviour
 	CapsuleCollider myCollider;
 	CapsuleCollider parryCollider;
 	Animator anim;
-	[SerializeField] Transform pivot;
-	[SerializeField] Transform bulletPoint;
+	public Transform pivot;
+	public Transform bulletPoint;
 	AudioSource audioSource;
-	[SerializeField] AudioClip[] audioClips;
+	public AudioClip[] audioClips;
 
 	public int team;
 
     public InputController inputController;
-    [SerializeField] float gravity;
+    public float gravity;
     float vSpeed;
-    [SerializeField] float maxVSpeed;
+    public float maxVSpeed;
 
     Vector3 moveVector;
 	[HideInInspector] public Vector3 lastDirection;
 	Vector3 rollingDirection;
-	[SerializeField] float moveSpeed;
+	public float moveSpeed;
 
 	bool rolling = false;
 	bool canRoll = true;
-	[SerializeField] float rollSpeed;
-	[SerializeField] float rollTime;
+	public float rollSpeed;
+	public float rollTime;
 	float rollTimer;
-	[SerializeField] float rollCoolDownTime;
+	public float rollCoolDownTime;
 	float rollCoolDownTimer;
 
 	bool parrying = false;
-	[SerializeField] float parryTime;
+	public float parryTime;
 	float parryTimer;
 	bool shouldParry = false;
     bool lastParryState = false;
@@ -46,20 +46,20 @@ public class PlayerController : MonoBehaviour
 	GameObject bulletPickUp;
 	GameObject pickUpGO;
 
-	[SerializeField] GameObject bulletRendererGO;
+	public GameObject bulletRendererGO;
 	SpriteRenderer bulletRenderer;
 	Sprite bulletSprite;
 	public GameObject bulletCarried;
 	bool canThrow = false;
-	[SerializeField] float throwOffset;
+	public float throwOffset;
 
 	int throwForce = 0;
-	[SerializeField] float throwStepTime = 1f;
+	public float throwStepTime = 1f;
 	float throwStepTimer = 0;
 
     BulletForce.BulletType actualBulletType;
 
-	[SerializeField] GameObject[] particleCharge;
+	public GameObject[] particleCharge;
 	ParticleSystem particleSmoke;
 
     [HideInInspector]

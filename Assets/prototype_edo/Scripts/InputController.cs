@@ -27,6 +27,7 @@ public class InputController : MonoBehaviour {
     //Dash
     //Prendi, lancia, parata
     public Vector3 getDirection() {
+
         if (!useKeyboard)
         {
             horizontal = state.ThumbSticks.Left.X;
