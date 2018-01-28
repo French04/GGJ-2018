@@ -10,6 +10,7 @@ public class BulletForce : MonoBehaviour
 	Sprite icon;
 	AudioSource audioSource;
 	[SerializeField] AudioClip[] audioClips;
+	[SerializeField] GameObject scoreParticle;
 
     Vector3 myDirection;
     public int mySpeed = 2;
@@ -86,11 +87,13 @@ public class BulletForce : MonoBehaviour
     {
         if (other.CompareTag("Goal"))
         {
+			Instantiate(scoreParticle, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             score.UpdateScore(1);
         }
         else if (other.CompareTag("Goal2"))
         {
+			Instantiate(scoreParticle, transform.position, Quaternion.identity);
             Destroy(this.gameObject);
             score.UpdateScore(2);
         }
