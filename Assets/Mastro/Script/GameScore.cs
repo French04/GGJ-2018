@@ -34,7 +34,7 @@ public class GameScore : MonoBehaviour {
 	void Start()
 	{
         playerController = FindObjectsOfType<PlayerController>();
-		audioSource = GetComponent<AudioSource>();
+		//audioSource = GetComponent<AudioSource>();
         winTeam1 = GameObject.Find("GameOver").transform.GetChild(0).gameObject;
         winTeam2 = GameObject.Find("GameOver").transform.GetChild(1).gameObject;
         draw = GameObject.Find("GameOver").transform.GetChild(2).gameObject;
