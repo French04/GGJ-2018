@@ -15,16 +15,14 @@ public class PickUp : MonoBehaviour {
 
     public float enabledTime;
     float takeItMoment;
-    float startAnimation;
-    float animationStarted;
 
     bool isPickUppable = true;
+    bool playAnimation = false;
 
     void Start()
     {
         myRender = GetComponent<MeshRenderer>();
         myCollider = GetComponent<Collider>();
-        startAnimation = enabledTime - 0.4f;
         smoke = GetComponent<ParticleSystem>();
         
     }
@@ -33,15 +31,12 @@ public class PickUp : MonoBehaviour {
     {
         if (enabledTime <= Time.time - takeItMoment && myRender.enabled == false)
         {
-            myRender.enabled = true;
             myCollider.enabled = true;
+            myRender.enabled = true;
             isPickUppable = true;
-        }
-        if (startAnimation <= Time.time - animationStarted && myRender.enabled == false)
-        {
             smoke.Play();
-        }
-        
+            Debug.Log("Spawn");
+        }      
     }
     
     void OnTriggerStay(Collider hit)
@@ -59,9 +54,7 @@ public class PickUp : MonoBehaviour {
                 myRender.enabled = false;
                 myCollider.enabled = false;
                 isPickUppable = false;
-                takeItMoment = Time.time;
-                animationStarted = Time.time;
-                Debug.Log("Spawn");
+                takeItMoment = Time.time;               
             }
 
 		}
