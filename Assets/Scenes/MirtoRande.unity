@@ -1327,6 +1327,7 @@ MonoBehaviour:
   audioClips:
   - {fileID: 8300000, guid: 81a6a85eee9ed43bab755e67df6443a0, type: 3}
   - {fileID: 8300000, guid: 5ec2598cba5ca491292600e0cc151055, type: 3}
+  - {fileID: 8300000, guid: 5ec2598cba5ca491292600e0cc151055, type: 3}
   gameTime: 60
   timeLimit: 0
   teamOneScore: 0
@@ -1337,6 +1338,7 @@ MonoBehaviour:
   timer: {fileID: 1969799378}
   uiText: {fileID: 1904289101}
   interval: 1
+  gameOver: 0
 --- !u!4 &879910259
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,7 +1362,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -1405,7 +1407,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -1429,7 +1431,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!1001 &898166976
 Prefab:
   m_ObjectHideFlags: 0

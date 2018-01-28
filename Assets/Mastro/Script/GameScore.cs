@@ -109,7 +109,8 @@ public class GameScore : MonoBehaviour {
 
 	void Update()
 	{
-		gameTime -= Time.deltaTime;
+		if(textStage == 4)
+			gameTime -= Time.deltaTime;
 		gameTime = Mathf.Max(gameTime, 0);
 		timerText.text = gameTime.ToString("f0");
 
