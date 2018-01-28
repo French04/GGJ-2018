@@ -160,10 +160,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f64ebbf342465f342b9802088c6a59a4, type: 3}
   - {fileID: 8300000, guid: abe4d9a3bb056b64d9bb235edf56842d, type: 3}
   - {fileID: 8300000, guid: b2b502a2d6b7dba479fbcbf9a673730a, type: 3}
+  scoreParticle: {fileID: 1479710357711428, guid: 61c4824daccdb4289980cb1dc75920b5,
+    type: 2}
   mySpeed: 6
   speedMult: 8
   speedBase: 20
-  lifeTime: 15
+  lifeTime: 8
   myTeam: 1
   myBulletType: 0
   pidgeonAmplitude: 30
