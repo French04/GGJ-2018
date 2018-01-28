@@ -326,12 +326,12 @@ public class PlayerController : MonoBehaviour
 
 		if (!parrying)
 		{
-			if (lastDirection.x >= 0)
+			if (lastDirection.x > 0)
 			{
 				renderer.flipX = false;
 				pivot.localScale = new Vector3(1, 1, 1);
 			}
-			else
+			else if (lastDirection.x < 0)
 			{
 				renderer.flipX = true;
 				pivot.localScale = new Vector3(-1, 1, 1);
