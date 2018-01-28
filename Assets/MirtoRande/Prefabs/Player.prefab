@@ -195,7 +195,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1939429981709532}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -3.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4797038538496442}
@@ -296,6 +296,7 @@ MonoBehaviour:
   moveSpeed: 8
   rollSpeed: 32
   rollTime: 0.1
+  rollCoolDownTime: 0.5
   parryTime: 0.5
   carrying: 0
   bulletRendererGO: {fileID: 1305222114496470}
@@ -330,6 +331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6df04bf051070463f85a6a1690420622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSpark: {fileID: 1479710357711428, guid: 90e73e15b9ddf4f1caa78aaf4ca4dba8, type: 2}
 --- !u!114 &114367631331917598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -397,7 +399,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3803,7 +3805,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3851,7 +3853,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1136904159
+  randomSeed: -67883876
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7164,7 +7166,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
