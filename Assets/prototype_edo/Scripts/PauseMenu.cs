@@ -12,8 +12,8 @@ public class PauseMenu : MonoBehaviour
     Button[] pauseButton;
 
     bool moveSelector = false;
-    bool gameInPause;
-    bool pausePressed;
+    bool gameInPause = false;
+    bool pausePressed = false;
     bool selectionPressed = false;
 
     int selectorButton = 0;
@@ -41,8 +41,6 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        Debug.Log(inputController.isPause());
-        Debug.Log(Time.timeScale);
         //reset pause button
         if (!inputController.isPause())
         {
