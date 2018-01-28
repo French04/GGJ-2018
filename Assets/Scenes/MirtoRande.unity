@@ -897,7 +897,7 @@ Prefab:
         type: 2}
       propertyPath: bulletIcon
       value: 
-      objectReference: {fileID: 21300000, guid: 02a486341060b46838cd2793a67fa34b,
+      objectReference: {fileID: 21300000, guid: 26bb0007fa0cb4c1583a430b6bc93377,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
@@ -1998,6 +1998,14 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
+    - target: {fileID: 4442618432764460, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4442618432764460, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -2.37
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
@@ -2297,7 +2305,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1597166698
+  randomSeed: 641727633
   InitialModule:
     serializedVersion: 3
     enabled: 1
