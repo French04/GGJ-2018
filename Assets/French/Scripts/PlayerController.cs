@@ -246,24 +246,28 @@ public class PlayerController : MonoBehaviour
 				case 0:
 					particleCharge[0].SetActive(false);
 					particleCharge[1].SetActive(false);
+					particleCharge[2].SetActive(false);
 					break;
 				case 1:
-					particleCharge[0].SetActive(false);
+					particleCharge[0].SetActive(true);
 					particleCharge[1].SetActive(false);
+					particleCharge[2].SetActive(false);
 					break;
 				case 2:
 					audioSource.clip = audioClips[1];
 					if(!audioSource.isPlaying)
 						audioSource.Play();
-					particleCharge[0].SetActive(true);
-					particleCharge[1].SetActive(false);
+					particleCharge[0].SetActive(false);
+					particleCharge[1].SetActive(true);
+					particleCharge[2].SetActive(false);
 					break;
 				case 3:
 					audioSource.clip = audioClips[2];
 					if (!audioSource.isPlaying)
 						audioSource.Play();
 					particleCharge[0].SetActive(false);
-					particleCharge[1].SetActive(true);
+					particleCharge[1].SetActive(false);
+					particleCharge[2].SetActive(true);
 					break;
 			}
 		}
@@ -282,6 +286,7 @@ public class PlayerController : MonoBehaviour
 			throwForce = 0;
 			particleCharge[0].SetActive(false);
 			particleCharge[1].SetActive(false);
+			particleCharge[2].SetActive(false);
 			bulletRenderer.sprite = null;
 			audioSource.Stop();
 			anim.SetTrigger("Throw");
