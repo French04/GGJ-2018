@@ -47,7 +47,7 @@ public class InputController : MonoBehaviour {
 
     public bool isDashing()
     {
-        if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.A.Equals(ButtonState.Pressed);
         return Input.GetButton("Dash_Keyboard");
     }
 
