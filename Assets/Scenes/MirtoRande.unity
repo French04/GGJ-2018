@@ -2006,19 +2006,10 @@ Prefab:
       propertyPath: m_Name
       value: Player1_team1
       objectReference: {fileID: 0}
-    - target: {fileID: 102372500889916396, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: m_Text
-      value: P2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1608565782893508, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
-      propertyPath: m_Name
-      value: P2
-      objectReference: {fileID: 0}
     - target: {fileID: 114121718517159940, guid: 40d85151d8696451c80c0bdeecb9ba6d,
         type: 2}
       propertyPath: useKeyboard
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
@@ -2629,6 +2620,15 @@ Prefab:
         type: 2}
       propertyPath: playerControllerIndex
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1608565782893508, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
+      propertyPath: m_Name
+      value: P1
+      objectReference: {fileID: 0}
+    - target: {fileID: 102372500889916396, guid: 40d85151d8696451c80c0bdeecb9ba6d,
+        type: 2}
+      propertyPath: m_Text
+      value: P1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
