@@ -53,13 +53,13 @@ public class BulletForce : MonoBehaviour
 		if (lifeTime < 0)
 			Destroy(gameObject);
 
-        if (myBulletType == BulletType.Raccomandata)
+		if (myBulletType == BulletType.Piccione)
         {
 			myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
 			myRigid.velocity += new Vector3(myDirection.z, 0, -myDirection.x) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
         }
 
-        else if (myBulletType == BulletType.Piccione)
+		else if (myBulletType == BulletType.Raccomandata)
         {
 			myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
 			myRigid.velocity += new Vector3(myDirection.x, 0, myDirection.z) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
@@ -98,6 +98,8 @@ public class BulletForce : MonoBehaviour
 		icon = s;
 		renderer = GetComponent<SpriteRenderer>();
 		renderer.sprite = icon;
+		if (myDirection.x < 0)
+			renderer.flipX = true;
     }
 
     public int GetTeam()

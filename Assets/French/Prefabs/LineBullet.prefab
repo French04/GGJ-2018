@@ -70,7 +70,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpeed: 6
-  speedMult: 10
+  speedMult: 5
+  speedBase: 10
   lifeTime: 15
   myTeam: 1
   myBulletType: 0

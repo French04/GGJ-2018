@@ -104,10 +104,6 @@ public class PlayerController : MonoBehaviour
 					{
 						Carry();
 					}
-					else
-					{
-						Parry(true);
-					}
 				}
 				else
 				{
@@ -117,6 +113,11 @@ public class PlayerController : MonoBehaviour
 			else
 			{
 				Throw();
+			}
+
+			if (inputController.isParrying())
+			{
+				Parry(true);
 			}
 		}
 		else

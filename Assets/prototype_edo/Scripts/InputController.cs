@@ -51,7 +51,7 @@ public class InputController : MonoBehaviour {
         return Input.GetButton("Dash_Keyboard");
     }
 
-    public bool isThrowingCrow() {
+    public bool isParrying() {
         if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
         return Input.GetButton("Crow_Keyboard");
     }

@@ -15,7 +15,7 @@ public class Parry : MonoBehaviour {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if(hit.CompareTag("Bullet")) 
+		if(hit.CompareTag("Bullet") && player.GetIsParrying()) 
 		{
 			Debug.Log("parata");
             player.SetShouldParry(true);
