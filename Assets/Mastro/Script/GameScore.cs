@@ -97,6 +97,7 @@ public class GameScore : MonoBehaviour {
 
 		scoreText1.text = teamOneScore.ToString();
 		scoreText2.text = teamTwoScore.ToString();
+		audioSource.PlayOneShot(audioClips[2]);
 	}
 
 

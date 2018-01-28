@@ -47,6 +47,19 @@ public class BulletForce : MonoBehaviour
 		myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
 		transform.rotation = Quaternion.Euler(-60, 0, 0);
+
+		switch (myBulletType)
+		{
+			case BulletType.Lettera:
+				audioSource.PlayOneShot(audioClips[0 + (mySpeed-1)]);
+				break;
+			case BulletType.Raccomandata:
+				audioSource.PlayOneShot(audioClips[3 + (mySpeed - 1)]);
+				break;
+			case BulletType.Piccione:
+				audioSource.PlayOneShot(audioClips[6 + (mySpeed - 1)]);
+				break;
+		}
     }
 
     void FixedUpdate()

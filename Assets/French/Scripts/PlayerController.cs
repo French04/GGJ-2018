@@ -232,10 +232,16 @@ public class PlayerController : MonoBehaviour
 					particleCharge[1].SetActive(false);
 					break;
 				case 2:
+					audioSource.clip = audioClips[1];
+					if(!audioSource.isPlaying)
+						audioSource.Play();
 					particleCharge[0].SetActive(true);
 					particleCharge[1].SetActive(false);
 					break;
 				case 3:
+					audioSource.clip = audioClips[2];
+					if (!audioSource.isPlaying)
+						audioSource.Play();
 					particleCharge[0].SetActive(false);
 					particleCharge[1].SetActive(true);
 					break;
@@ -257,6 +263,7 @@ public class PlayerController : MonoBehaviour
 			particleCharge[0].SetActive(false);
 			particleCharge[1].SetActive(false);
 			bulletRenderer.sprite = null;
+			audioSource.Stop();
 			anim.SetTrigger("Throw");
 		}
 
