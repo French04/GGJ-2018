@@ -1294,7 +1294,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 81a6a85eee9ed43bab755e67df6443a0, type: 3}
   - {fileID: 8300000, guid: 5ec2598cba5ca491292600e0cc151055, type: 3}
   - {fileID: 8300000, guid: 5ec2598cba5ca491292600e0cc151055, type: 3}
-  gameTime: 60
+  gameTime: 100
   timeLimit: 0
   teamOneScore: 0
   teamTwoScore: 0
