@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4368852, g: 0.48453736, b: 0.56479335, a: 1}
+  m_IndirectSpecularColor: {r: 0.43688503, g: 0.4845369, b: 0.56479317, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -607,6 +607,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -817,6 +823,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1144,6 +1156,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1756,6 +1774,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1798,24 +1822,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
-    - target: {fileID: 4024950752931578, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024950752931578, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4024950752931578, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
-        type: 2}
-      propertyPath: bulletIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: a891a3aaff366487ba5f0a80852cb7aa,
-        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -2065,6 +2071,12 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bullet
+      value: 
+      objectReference: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0

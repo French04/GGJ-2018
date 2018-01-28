@@ -55,9 +55,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cee59d2a9963f174995a5577440d3a24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bullet: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177, type: 2}
+  bullet: {fileID: 1217677658735160, guid: 724862d01817164498af453e9757cb56, type: 2}
   bulletType: 2
-  bulletIcon: {fileID: 21300000, guid: 09db5c5ae270f4dd799a9ee1d2395c92, type: 3}
+  bulletIcon: {fileID: 21300000, guid: a891a3aaff366487ba5f0a80852cb7aa, type: 3}
   enabledTime: 2
 --- !u!135 &135353348061265214
 SphereCollider:
@@ -131,7 +131,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -551544969
+  randomSeed: 1826890034
   InitialModule:
     serializedVersion: 3
     enabled: 1
