@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
 	Animator anim;
 	[SerializeField] Transform pivot;
 	[SerializeField] Transform bulletPoint;
+	AudioSource audioSource;
+	[SerializeField] AudioClip[] audioClips;
 
 	public int team;
 
@@ -73,6 +75,7 @@ public class PlayerController : MonoBehaviour
 		anim = GetComponentInChildren<Animator>();
 		particleSmoke = GetComponent<ParticleSystem>();
 		bulletRenderer = bulletRendererGO.GetComponent<SpriteRenderer>();
+		audioSource = GetComponent<AudioSource>();
 
 		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
