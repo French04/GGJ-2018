@@ -47,6 +47,7 @@ public class BulletForce : MonoBehaviour
 		myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
 		transform.rotation = Quaternion.Euler(-60, 0, 0);
+		audioSource = GetComponent<AudioSource> ();
 
 		switch (myBulletType)
 		{
