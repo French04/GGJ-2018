@@ -6,6 +6,8 @@ public class BulletForce : MonoBehaviour
 {
     Rigidbody myRigid;
     PlayerController player;
+	SpriteRenderer renderer;
+	Sprite icon;
 
     Vector3 myDirection;
     public int mySpeed = 2;
@@ -15,7 +17,6 @@ public class BulletForce : MonoBehaviour
     public int myTeam = 0;
     public BulletType myBulletType;
 
-    float t;
     public float pidgeonAmplitude = 15f;
     public float pidgeonFrequency = 15f;
     public float raccomandataAmplitude = 15f;
@@ -38,7 +39,7 @@ public class BulletForce : MonoBehaviour
     {
         player = FindObjectOfType<PlayerController>();
 		myRigid = GetComponent<Rigidbody>();
-
+		renderer = GetComponent<SpriteRenderer>();
         leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
 		myRigid.velocity = myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
@@ -85,12 +86,14 @@ public class BulletForce : MonoBehaviour
 		print("It just works");
     }
 
-    public void Settings(Vector3 direction, int speed, int team, BulletType bulletType)
+	public void Settings(Vector3 direction, int speed, int team, BulletType bulletType, Sprite s)
     {
         myDirection = direction;
         mySpeed = speed;
         myTeam = team;
         myBulletType = bulletType;
+		icon = s;
+		renderer.sprite = icon;
     }
 
     public int GetTeam()

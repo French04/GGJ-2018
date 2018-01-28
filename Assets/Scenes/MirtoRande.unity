@@ -766,6 +766,12 @@ Prefab:
       propertyPath: bulletType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 26bb0007fa0cb4c1583a430b6bc93377,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0
@@ -1409,6 +1415,12 @@ Prefab:
       propertyPath: bulletType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114338967412486744, guid: c083ab6bb472c4f1aaf8f79665134018,
+        type: 2}
+      propertyPath: bulletIcon
+      value: 
+      objectReference: {fileID: 21300000, guid: 26bb0007fa0cb4c1583a430b6bc93377,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
   m_IsPrefabParent: 0

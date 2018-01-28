@@ -225,7 +225,7 @@ public class PlayerController : MonoBehaviour
 		if (throwForce > 0 && carrying)
 		{
 			GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
-			i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType);
+			i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType, bulletSprite);
 			carrying = false;
 			bulletCarried = null;
 			throwForce = 0;
