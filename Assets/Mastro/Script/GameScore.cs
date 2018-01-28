@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine.UI;
 
 public class GameScore : MonoBehaviour {
 
@@ -13,46 +13,26 @@ public class GameScore : MonoBehaviour {
 	[SerializeField] GameObject scoreboard1;
 	[SerializeField] GameObject scoreboard2;
 	[SerializeField] GameObject timer;
-	[SerializeField] Text uiText;
-	[SerializeField] float interval;
-	int textStage;
+    GameObject winTeam1;
+    GameObject winTeam2;
 
 	TextMesh scoreText1;
 	TextMesh scoreText2;
 	TextMesh timerText;
+    PlayerController[] playerController = new PlayerController[4];
 
 	void Start()
 	{
-		scoreText1 = scoreboard1.GetComponent<TextMesh>();
+        playerController = FindObjectsOfType<PlayerController>();
+        winTeam1 = GameObject.Find("GameOver").transform.GetChild(0).gameObject;
+        winTeam2 = GameObject.Find("GameOver").transform.GetChild(1).gameObject;
+        winTeam1.SetActive(false);
+        winTeam2.SetActive(false);
+
+        scoreText1 = scoreboard1.GetComponent<TextMesh>();
 		scoreText2 = scoreboard2.GetComponent<TextMesh>();
 		timerText = timer.GetComponent<TextMesh>();
 		UpdateScore(0);
-		StartCoroutine(StartGame());
-	}
-
-
-	IEnumerator StartGame()
-	{
-		while (textStage < 4)
-		{
-			yield return new WaitForSeconds(interval);
-			switch (textStage)
-			{
-				case 0:
-					uiText.text = "Ready?";
-					break;
-				case 1:
-					uiText.text = "Set";
-					break;
-				case 2:
-					uiText.text = "Go!";
-					break;
-				case 3:
-					uiText.text = "";
-					break;
-			}
-			textStage++;
-		}
 	}
 
 
@@ -86,6 +66,22 @@ public class GameScore : MonoBehaviour {
 
 	void GameOver()
 	{
-		
+		if(teamOneScore > teamTwoScore)
+        {
+            winTeam1.SetActive(true);
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = false;
+            }
+            
+        }
+        else
+        {
+            winTeam2.SetActive(true);
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = false;
+            }
+        }
 	}
 }
