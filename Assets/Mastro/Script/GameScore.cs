@@ -18,6 +18,7 @@ public class GameScore : MonoBehaviour {
 	[SerializeField] GameObject timer;
 	[SerializeField] Text uiText;
 	[SerializeField] float interval;
+	[SerializeField] float highightSize;
 	int textStage = 0;
     GameObject winTeam1;
     GameObject winTeam2;
@@ -95,10 +96,12 @@ public class GameScore : MonoBehaviour {
         if(team == 1)
         {
             teamOneScore++;
+			scoreText1.characterSize = highightSize;
         }
         else if(team == 2)
         {
             teamTwoScore++;
+			scoreText2.characterSize = highightSize;
         }
 
 		scoreText1.text = teamOneScore.ToString();
@@ -118,6 +121,11 @@ public class GameScore : MonoBehaviour {
 		{
 			GameOver();
 		}
+
+		if (scoreText1.characterSize > 1)
+			scoreText1.characterSize -= (highightSize - 1) / 10;
+		if (scoreText2.characterSize > 1)
+			scoreText2.characterSize -= (highightSize - 1) / 10;
 	}
 
 	void GameOver()
