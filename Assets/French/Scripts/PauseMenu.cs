@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -100,11 +100,11 @@ public class PauseMenu : MonoBehaviour
                 break;
             case 1:
                 Time.timeScale = 1;
-                EditorSceneManager.LoadScene(1);
+                SceneManager.LoadScene(1);
                 break;
             case 2:
                 Time.timeScale = 1;
-                EditorSceneManager.LoadScene(0);
+                SceneManager.LoadScene(0);
                 break;
         }
     }

@@ -1,15 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     CharacterController control;
-	SpriteRenderer renderer;
+	SpriteRenderer myRenderer;
 	CapsuleCollider myCollider;
 	CapsuleCollider parryCollider;
-	Animator anim;
+	private Animator anim;
 	public Transform pivot;
 	public Transform bulletPoint;
 	AudioSource audioSource;
@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
     public float maxVSpeed;
 
     Vector3 moveVector;
-	[HideInInspector] public Vector3 lastDirection;
+	public Vector3 lastDirection;
 	Vector3 rollingDirection;
 	public float moveSpeed;
 
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
 	bool shouldParry = false;
     bool lastParryState = false;
 
-	[HideInInspector] public bool carrying = false;
+	public bool carrying = false;
 	bool shouldCarry = false;
 	GameObject bulletPickUp;
 	GameObject pickUpGO;
@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
 	public GameObject[] particleCharge;
 	ParticleSystem particleSmoke;
 
-    [HideInInspector]
+    
     public bool canMove;
 
     GameScore gameScore;
@@ -72,9 +72,9 @@ public class PlayerController : MonoBehaviour
 
 	private void Awake()
 	{
-		renderer = GetComponentInChildren<SpriteRenderer>();
+		myRenderer = GetComponentInChildren<SpriteRenderer>();
 		if (Mathf.Pow(-1, team) < 0)
-			renderer.flipX = true;
+			myRenderer.flipX = true;
 	}
 
 
@@ -336,12 +336,12 @@ public class PlayerController : MonoBehaviour
 		{
 			if (lastDirection.x > 0)
 			{
-				renderer.flipX = false;
+				myRenderer.flipX = false;
 				pivot.localScale = new Vector3(1, 1, 1);
 			}
 			else if (lastDirection.x < 0)
 			{
-				renderer.flipX = true;
+				myRenderer.flipX = true;
 				pivot.localScale = new Vector3(-1, 1, 1);
 			}
 		}
@@ -393,7 +393,7 @@ public class PlayerController : MonoBehaviour
             }
             else {
                 //Reload match
-                EditorSceneManager.LoadScene(1);
+                SceneManager.LoadScene(1);
             }
         }
         //Keep state for the next frame

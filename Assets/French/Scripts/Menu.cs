@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class Menu : MonoBehaviour
 {
@@ -164,7 +164,7 @@ public class Menu : MonoBehaviour
             switch (selectorButton)
             {
                 case 0:
-                    EditorSceneManager.LoadScene(1);
+                    SceneManager.LoadScene(1);
                     break;
                 case 1:
                     selectorPanel = 1;
