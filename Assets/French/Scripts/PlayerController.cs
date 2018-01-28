@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 	public int team;
 
-    InputController inputController;
+    public InputController inputController;
     [SerializeField] float gravity;
     float vSpeed;
     [SerializeField] float maxVSpeed;
@@ -225,8 +225,7 @@ public class PlayerController : MonoBehaviour
 
 	void ChargeShot()
 	{
-		if (throwForce == 0 && canThrow)
-			throwForce = 1;
+		
 
 		if (throwForce < 3)
 		{
@@ -277,13 +276,13 @@ public class PlayerController : MonoBehaviour
 
 	void Throw()
 	{
-		if (throwForce > 0 && carrying)
+		if (carrying)
 		{
 			GameObject i = Instantiate(bulletCarried, bulletPoint.position + lastDirection * throwOffset, transform.rotation);
 			i.GetComponent<BulletForce>().Settings(lastDirection, throwForce, team, actualBulletType, bulletSprite);
 			carrying = false;
 			bulletCarried = null;
-			throwForce = 0;
+			throwForce = 1;
 			particleCharge[0].SetActive(false);
 			particleCharge[1].SetActive(false);
 			particleCharge[2].SetActive(false);
@@ -390,7 +389,7 @@ public class PlayerController : MonoBehaviour
             if (!gameScore.gameOver)
             {
                 //Open or close pause menu
-                pauseMenu.PauseSwitch();
+                pauseMenu.PauseSwitch(inputController);
             }
             else {
                 //Reload match

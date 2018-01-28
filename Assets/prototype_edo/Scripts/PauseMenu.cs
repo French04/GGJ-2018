@@ -28,7 +28,7 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         gameInPlay = false;
-        inputController = GameObject.FindObjectOfType<InputController>();
+        //inputController = GameObject.FindObjectOfType<InputController>();
         selector = transform.GetChild(0).GetChild(4).gameObject;
 
         pausePanel = transform.GetChild(0).gameObject;
@@ -49,8 +49,9 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        if (!gameInPlay)
+        if (!gameInPlay && inputController != null)
         {
+             
             //moveselelector reset
             if (inputController.getDirection().z == 0)
             {
@@ -69,13 +70,13 @@ public class PauseMenu : MonoBehaviour
                 selectorButton--;
             }
 
-            if (inputController.isFiring() && !selectionPressed)
+            if (inputController.isDashing() && !selectionPressed)
             {
                 selectionPressed = true;
                 Selections();
             }
 
-            if (!inputController.isFiring())
+            if (!inputController.isDashing())
             {
                 selectionPressed = false;
             }
@@ -95,7 +96,7 @@ public class PauseMenu : MonoBehaviour
         switch (selectorButton)
         {
             case 0:
-                PauseSwitch();
+                PauseSwitch(inputController);
                 break;
             case 1:
                 Time.timeScale = 1;
@@ -113,12 +114,13 @@ public class PauseMenu : MonoBehaviour
 
 
     
-    public void PauseSwitch()
-    {
+    public void PauseSwitch(InputController inputController)
+    {   
         if (canPause) //bug fixing for start
         {
+            this.inputController = inputController;
             if (!gameInPlay)
-            {
+            {  
                 Debug.Log("Turn Off Pause menu");
                 //Turn Off Pause Menu
                 for (int i = 0; i < playerController.Length; i++)
