@@ -11,7 +11,6 @@ public class PickUp : MonoBehaviour {
     public GameObject bullet;
     public BulletForce.BulletType bulletType;
 	public Sprite bulletIcon;
-    MeshRenderer myRender;
     Collider myCollider;
     ParticleSystem smoke;
 
@@ -23,7 +22,6 @@ public class PickUp : MonoBehaviour {
 
     void Start()
     {
-        myRender = GetComponent<MeshRenderer>();
         myCollider = GetComponent<Collider>();
         smoke = GetComponent<ParticleSystem>();
 		renderer = GetComponent<SpriteRenderer>();
@@ -36,7 +34,7 @@ public class PickUp : MonoBehaviour {
         if (enabledTime <= Time.time - takeItMoment && isPickUppable == false)
         {
             myCollider.enabled = true;
-            myRender.enabled = true;            
+            renderer.enabled = true;            
             smoke.Play();
             isPickUppable = true;
             Debug.Log("Spawn");
@@ -57,7 +55,7 @@ public class PickUp : MonoBehaviour {
                 if(isPickUppable)
 			        player.SetShouldCarry(true, bullet, null, bulletType, bulletIcon);
 
-                myRender.enabled = false;
+				renderer.enabled = false;
                 myCollider.enabled = false;
                 isPickUppable = false;
                 takeItMoment = Time.time;                           
