@@ -67,7 +67,8 @@ public class PlayerController : MonoBehaviour
 
     GameScore gameScore;
     PauseMenu pauseMenu;
-
+    bool lastPauseButtonState = false;
+    bool currentPauseButtonState = false;
 
 	private void Awake()
 	{
@@ -79,7 +80,7 @@ public class PlayerController : MonoBehaviour
 
 	void Start ()
     {
-        canMove = true;
+        canMove = false;
         inputController = GetComponent<InputController>();
         control = GetComponent<CharacterController>();
 		myCollider = GetComponent<CapsuleCollider>();
@@ -105,16 +106,10 @@ public class PlayerController : MonoBehaviour
 		    ManageInput();
 		    ManageMovement();
         }
+        CheckPause();
         
-        if(inputController.isPause() && gameScore.gameOver)
-        {
-            EditorSceneManager.LoadScene(1);
-        }
 
-        if(inputController.isPause() && !gameScore.gameOver)
-        {
-            pauseMenu.PauseSwitch();
-        }
+       
     }
 
 
@@ -382,4 +377,22 @@ public class PlayerController : MonoBehaviour
 	{
 		return parrying;
 	}
+
+    public void CheckPause() {
+        currentPauseButtonState = inputController.isPause();
+        if (!lastPauseButtonState && currentPauseButtonState) {
+            //Triggering pause menu
+            if (!gameScore.gameOver)
+            {
+                //Open or close pause menu
+                pauseMenu.PauseSwitch();
+            }
+            else {
+                //Reload match
+                EditorSceneManager.LoadScene(1);
+            }
+        }
+        //Keep state for the next frame
+        lastPauseButtonState = currentPauseButtonState;
+    }
 }

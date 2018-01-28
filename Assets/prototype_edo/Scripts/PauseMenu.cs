@@ -13,18 +13,20 @@ public class PauseMenu : MonoBehaviour
 
     bool moveSelector = false;
     [HideInInspector]
-    public bool gameInPause = false;
+    public bool gameInPlay = false;
     [HideInInspector]
     public bool pausePressed = false;
     bool selectionPressed = false;
 
     int selectorButton = 0;
 
+    PlayerController[] playerController = new PlayerController[4];
+
     // Use this for initialization
     void Start()
     {
         Time.timeScale = 1;
-        gameInPause = false;
+        gameInPlay = false;
         pausePressed = false;
         inputController = GameObject.FindObjectOfType<InputController>();
         selector = transform.GetChild(0).GetChild(4).gameObject;
@@ -38,6 +40,8 @@ public class PauseMenu : MonoBehaviour
         }
 
         pausePanel.SetActive(false);
+
+        playerController = FindObjectsOfType<PlayerController>();
     }
 
     // Update is called once per frame
@@ -56,12 +60,12 @@ public class PauseMenu : MonoBehaviour
         }
 
         //switch selector
-        if (inputController.getDirection().z < 0 && selectorButton < 2 && !moveSelector && gameInPause)
+        if (inputController.getDirection().z < 0 && selectorButton < 2 && !moveSelector && !gameInPlay)
         {
             moveSelector = true;
             selectorButton++;
         }
-        else if (inputController.getDirection().z > 0 && selectorButton > 0 && !moveSelector && gameInPause)
+        else if (inputController.getDirection().z > 0 && selectorButton > 0 && !moveSelector && !gameInPlay)
         {
             moveSelector = true;
             selectorButton--;
@@ -79,7 +83,7 @@ public class PauseMenu : MonoBehaviour
         }
 
         //move selector icon
-        if(gameInPause)
+        if(!gameInPlay)
             MoveSelectorIcon(pauseButton[selectorButton].transform);
     }
 
@@ -91,7 +95,7 @@ public class PauseMenu : MonoBehaviour
     void Resume()
     {
         Time.timeScale = 1;
-        gameInPause = false;
+        gameInPlay = false;
         pausePanel.SetActive(false);
     }
 
@@ -113,19 +117,36 @@ public class PauseMenu : MonoBehaviour
         }
     }
 
+    bool lastPauseButtonState;
+    bool currentPauseButtonState;
+
+
+    
     public void PauseSwitch()
     {
-        if (!gameInPause && !pausePressed)
+        if (!gameInPlay)
         {
-            pausePressed = true;
-            gameInPause = true;
-            pausePanel.SetActive(true);
-            Time.timeScale = 0;
-        }
-        else if (gameInPause && !pausePressed)
-        {
-            pausePressed = true;
+            Debug.Log("Turn Off Pause menu");
+            //Turn Off Pause Menu
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = true;
+            }
             Resume();
         }
+            
+        else {
+            Debug.Log("Turn On Pause menu");
+            //Turn On Pause menu
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = false;
+            }
+            pausePanel.SetActive(true);
+            Time.timeScale = 0;
+
+        }
+        gameInPlay = !gameInPlay;
+        
     }
 }
