@@ -8,6 +8,8 @@ public class BulletForce : MonoBehaviour
     PlayerController player;
 	SpriteRenderer renderer;
 	Sprite icon;
+	AudioSource audioSource;
+	[SerializeField] AudioClip[] audioClips;
 
     Vector3 myDirection;
     public int mySpeed = 2;

@@ -164,6 +164,7 @@ public class PlayerController : MonoBehaviour
 			canRoll = false;
 			anim.SetBool("Rolling", true);
 			rollCoolDownTimer = rollCoolDownTime;
+			audioSource.PlayOneShot(audioClips[0]);
 		}
 	}
 
