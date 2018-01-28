@@ -320,5 +320,9 @@ public class PlayerController : MonoBehaviour
 		bulletSprite = icon;
     }
 
-    
+
+	public bool GetIsParrying()
+	{
+		return parrying;
+	}
 }
