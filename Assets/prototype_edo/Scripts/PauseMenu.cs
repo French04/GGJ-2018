@@ -15,7 +15,6 @@ public class PauseMenu : MonoBehaviour
     [HideInInspector]
     public bool gameInPlay = false;
     [HideInInspector]
-    public bool pausePressed = false;
     bool selectionPressed = false;
 
     int selectorButton = 0;
@@ -27,7 +26,6 @@ public class PauseMenu : MonoBehaviour
     {
         Time.timeScale = 1;
         gameInPlay = false;
-        pausePressed = false;
         inputController = GameObject.FindObjectOfType<InputController>();
         selector = transform.GetChild(0).GetChild(4).gameObject;
 
@@ -47,44 +45,40 @@ public class PauseMenu : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
-        //reset pause button
-        if (!inputController.isPause())
+        if (!gameInPlay)
         {
-            pausePressed = false;
-        }
+            //moveselelector reset
+            if (inputController.getDirection().z == 0)
+            {
+                moveSelector = false;
+            }
 
-        //moveselelector reset
-        if (inputController.getDirection().z == 0)
-        {
-            moveSelector = false;
-        }
+            //switch selector
+            if (inputController.getDirection().z < 0 && selectorButton < 2 && !moveSelector)
+            {
+                moveSelector = true;
+                selectorButton++;
+            }
+            else if (inputController.getDirection().z > 0 && selectorButton > 0 && !moveSelector)
+            {
+                moveSelector = true;
+                selectorButton--;
+            }
 
-        //switch selector
-        if (inputController.getDirection().z < 0 && selectorButton < 2 && !moveSelector && !gameInPlay)
-        {
-            moveSelector = true;
-            selectorButton++;
-        }
-        else if (inputController.getDirection().z > 0 && selectorButton > 0 && !moveSelector && !gameInPlay)
-        {
-            moveSelector = true;
-            selectorButton--;
-        }
+            if (inputController.isFiring() && !selectionPressed)
+            {
+                selectionPressed = true;
+                Selections();
+            }
 
-        if (inputController.isFiring() && !selectionPressed)
-        {
-            selectionPressed = true;
-            Selections();
-        }
+            if (!inputController.isFiring())
+            {
+                selectionPressed = false;
+            }
 
-        if (!inputController.isFiring())
-        {
-            selectionPressed = false;
-        }
-
-        //move selector icon
-        if(!gameInPlay)
+            //move selector icon
             MoveSelectorIcon(pauseButton[selectorButton].transform);
+        }
     }
 
     void MoveSelectorIcon(Transform obj)
@@ -92,19 +86,12 @@ public class PauseMenu : MonoBehaviour
         selector.transform.position = obj.transform.position;
     }
 
-    void Resume()
-    {
-        Time.timeScale = 1;
-        gameInPlay = false;
-        pausePanel.SetActive(false);
-    }
-
     void Selections()
     {
         switch (selectorButton)
         {
             case 0:
-                Resume();
+                PauseSwitch();
                 break;
             case 1:
                 Time.timeScale = 1;
@@ -132,10 +119,12 @@ public class PauseMenu : MonoBehaviour
             {
                 playerController[i].canMove = true;
             }
-            Resume();
+            pausePanel.SetActive(false);
+            Time.timeScale = 1;
         }
             
-        else {
+        else
+        {
             Debug.Log("Turn On Pause menu");
             //Turn On Pause menu
             for (int i = 0; i < playerController.Length; i++)
