@@ -1001,7 +1001,7 @@ Prefab:
         type: 2}
       propertyPath: bulletIcon
       value: 
-      objectReference: {fileID: 21300000, guid: d3c397b88f1e64a73b66527701ecc895,
+      objectReference: {fileID: 21300000, guid: 906fb8a9cc23349fbad07e3e9f3b4aa3,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
@@ -1714,7 +1714,7 @@ Prefab:
         type: 2}
       propertyPath: bulletIcon
       value: 
-      objectReference: {fileID: 21300000, guid: d3c397b88f1e64a73b66527701ecc895,
+      objectReference: {fileID: 21300000, guid: 906fb8a9cc23349fbad07e3e9f3b4aa3,
         type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c083ab6bb472c4f1aaf8f79665134018, type: 2}
