@@ -6,9 +6,11 @@ public class BulletForce : MonoBehaviour
 {
     Rigidbody myRigid;
     PlayerController player;
+
     Vector3 myDirection;
     public int mySpeed = 2;
 	[SerializeField] float speedMult;
+	[SerializeField] float lifeTime;
 
     public int myTeam = 0;
     public BulletType myBulletType;
@@ -34,35 +36,33 @@ public class BulletForce : MonoBehaviour
 
     private void Start()
     {
-        t = 0;
-        player = GameObject.FindObjectOfType<PlayerController>();
+        player = FindObjectOfType<PlayerController>();
 		myRigid = GetComponent<Rigidbody>();
 
-		myRigid.velocity = myDirection * mySpeed * speedMult;
         leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
-
+		myRigid.velocity = myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
     }
 
     void FixedUpdate()
     {
-        t += Time.deltaTime;
+		lifeTime -= Time.deltaTime;
+		if (lifeTime < 0)
+			Destroy(gameObject);
+
         if (myBulletType == BulletType.Raccomandata)
         {
-            /*effectDirection.x = leadingDirection.x + raccomandataAmplitude * Mathf.Sin(raccomandataFrequency * t);
-            effectDirection.z = leadingDirection.z + raccomandataAmplitude * Mathf.Cos(raccomandataFrequency * t);*/
 			myRigid.velocity = myDirection * mySpeed * speedMult;
-            //.velocity = transform.TransformDirection(effectDirection);
+			myRigid.velocity += new Vector3(myDirection.z, 0, -myDirection.x) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
         }
+
         else if (myBulletType == BulletType.Piccione)
         {
-            effectDirection.x = leadingDirection.x + pidgeonAmplitude * Mathf.Sin(pidgeonFrequency * t);
-            effectDirection.z = leadingDirection.z;
-            myRigid.velocity = transform.TransformDirection(effectDirection);
+			//myRigid.rotation += pidgeonAmplitude;
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Goal"))
         {
@@ -76,10 +76,13 @@ public class BulletForce : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+	public void OnCollisionEnter(Collision collision)
     {
-        //After a collision on the wall, update the leading direction
-        leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
+		//After a collision on the wall, update the leading direction
+		myBulletType = BulletType.Lettera;
+		leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
+
+		print("It just works");
     }
 
     public void Settings(Vector3 direction, int speed, int team, BulletType bulletType)

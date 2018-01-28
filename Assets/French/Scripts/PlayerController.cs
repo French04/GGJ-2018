@@ -40,7 +40,10 @@ public class PlayerController : MonoBehaviour
 	bool shouldCarry = false;
 	GameObject bulletPickUp;
 	GameObject pickUpGO;
-	Texture2D bulletIcon;
+
+	[SerializeField] GameObject bulletRendererGO;
+	SpriteRenderer bulletRenderer;
+	Sprite bulletSprite;
 	public GameObject bulletCarried;
 	bool canThrow = false;
 	[SerializeField] float throwOffset;
@@ -63,6 +66,7 @@ public class PlayerController : MonoBehaviour
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
 		particleSmoke = GetComponent<ParticleSystem>();
+		bulletRenderer = bulletRendererGO.GetComponent<SpriteRenderer>();
 
 		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
 		throwStepTimer = throwStepTime;
@@ -150,6 +154,7 @@ public class PlayerController : MonoBehaviour
 		bulletCarried = bulletPickUp;
 		Destroy(pickUpGO);
 		canThrow = false;
+		bulletRenderer.sprite = bulletSprite;
 		shouldCarry = false;
 	}
 
@@ -226,6 +231,7 @@ public class PlayerController : MonoBehaviour
 			throwForce = 0;
 			particleCharge[0].SetActive(false);
 			particleCharge[1].SetActive(false);
+			bulletRenderer.sprite = null;
 			anim.SetTrigger("Throw");
 		}
 
@@ -305,13 +311,13 @@ public class PlayerController : MonoBehaviour
 	}
 
 
-	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup, BulletForce.BulletType bulletType, Texture2D icon)
+	public void SetShouldCarry(bool b, GameObject obj, GameObject pickup, BulletForce.BulletType bulletType, Sprite icon)
 	{
 		shouldCarry = b;
 		bulletPickUp = obj;
 		pickUpGO = pickup;
         actualBulletType = bulletType;
-		bulletIcon = icon;
+		bulletSprite = icon;
     }
 
     

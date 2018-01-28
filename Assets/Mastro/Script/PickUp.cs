@@ -8,7 +8,7 @@ public class PickUp : MonoBehaviour {
     InputController control;
     public GameObject bullet;
     public BulletForce.BulletType bulletType;
-	public Texture2D bulletIcon;
+	public Sprite bulletIcon;
     MeshRenderer myRender;
     Collider myCollider;
 

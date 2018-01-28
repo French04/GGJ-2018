@@ -112,10 +112,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mySpeed: 6
+  speedMult: 10
   myTeam: 0
   myBulletType: 0
-  amplitude: 20
-  frequency: 7
+  pidgeonAmplitude: 15
+  pidgeonFrequency: 15
+  raccomandataAmplitude: 15
+  raccomandataFrequency: 15
 --- !u!135 &135249130690122502
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -154,7 +154,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1090029539365248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.09, z: 0.06}
+  m_LocalPosition: {x: 0, y: 2.32, z: 0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4797038538496442}
@@ -206,13 +206,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1305222114496470}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.71, y: 0.29, z: -2.29}
+  m_LocalRotation: {x: -0.5, y: 0, z: 0, w: 0.8660254}
+  m_LocalPosition: {x: 1.71, y: 1.13, z: -1.39}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4188465038947322}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -60, y: 0, z: 0}
 --- !u!4 &4738257129348250
 Transform:
   m_ObjectHideFlags: 1
@@ -297,6 +297,7 @@ MonoBehaviour:
   rollTime: 0.1
   parryTime: 0.5
   carrying: 0
+  bulletRendererGO: {fileID: 1305222114496470}
   bulletCarried: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177,
     type: 2}
   throwOffset: 0.5
@@ -315,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7afb7100aa783244880e0de02683740, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useKeyboard: 0
+  useKeyboard: 1
   playerControllerIndex: 0
 --- !u!114 &114367631331917598
 MonoBehaviour:
@@ -384,7 +385,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3790,7 +3791,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3838,7 +3839,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 615498178
+  randomSeed: 832408545
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7151,7 +7152,7 @@ ParticleSystem:
   stopAction: 0
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -10741,15 +10742,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 78c7d90f74c4e440d9cac7293ffbf926, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 8, y: 5.31}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!212 &212408690555204228
 SpriteRenderer:
