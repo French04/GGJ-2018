@@ -5,6 +5,7 @@ using UnityEngine;
 public class Parry : MonoBehaviour {
 
 	PlayerController player;
+	public GameObject hitSpark;
 
 
 	void Start()
@@ -20,6 +21,7 @@ public class Parry : MonoBehaviour {
 			Debug.Log("parata");
             player.SetShouldParry(true);
             Destroy(hit.gameObject);
+			Instantiate(hitSpark, hit.gameObject.transform.position, Quaternion.identity);
         }
 			
 	}
