@@ -270,10 +270,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -372,9 +372,8 @@ MonoBehaviour:
   bulletPoint: {fileID: 4442618432764460}
   audioClips:
   - {fileID: 8300000, guid: 4bc68ac023b004f819b1941fa47e775e, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 6f6c588c6730d41c7b03658d51880dca, type: 3}
+  - {fileID: 8300000, guid: b224340a36a4741019c2136ac9ac6004, type: 3}
   team: 2
   gravity: 2
   maxVSpeed: 16
@@ -3940,7 +3939,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1941284533
+  randomSeed: 1688557695
   InitialModule:
     serializedVersion: 3
     enabled: 1
