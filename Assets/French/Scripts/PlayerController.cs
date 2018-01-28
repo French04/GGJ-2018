@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -64,12 +65,23 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool canMove;
 
-    void Start ()
+    GameScore gameScore;
+    PauseMenu pauseMenu;
+
+
+	private void Awake()
+	{
+		renderer = GetComponentInChildren<SpriteRenderer>();
+		if (Mathf.Pow(-1, team) < 0)
+			renderer.flipX = true;
+	}
+
+
+	void Start ()
     {
         canMove = true;
         inputController = GetComponent<InputController>();
         control = GetComponent<CharacterController>();
-		renderer = GetComponentInChildren<SpriteRenderer>();
 		myCollider = GetComponent<CapsuleCollider>();
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
@@ -77,9 +89,14 @@ public class PlayerController : MonoBehaviour
 		bulletRenderer = bulletRendererGO.GetComponent<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
 
-		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
+		lastDirection = new Vector3(Mathf.Pow(-1, team), 0, 0);
+
 		throwStepTimer = throwStepTime;
-	}
+
+        gameScore = FindObjectOfType<GameScore>();
+        pauseMenu = FindObjectOfType<PauseMenu>();
+
+    }
 
 	void Update()
 	{
@@ -89,6 +106,15 @@ public class PlayerController : MonoBehaviour
 		    ManageMovement();
         }
         
+        if(inputController.isPause() && gameScore.gameOver)
+        {
+            EditorSceneManager.LoadScene(1);
+        }
+
+        if(inputController.isPause() && !gameScore.gameOver)
+        {
+            pauseMenu.PauseSwitch();
+        }
     }
 
 
@@ -309,12 +335,12 @@ public class PlayerController : MonoBehaviour
 
 		if (!parrying)
 		{
-			if (lastDirection.x >= 0)
+			if (lastDirection.x > 0)
 			{
 				renderer.flipX = false;
 				pivot.localScale = new Vector3(1, 1, 1);
 			}
-			else
+			else if (lastDirection.x < 0)
 			{
 				renderer.flipX = true;
 				pivot.localScale = new Vector3(-1, 1, 1);
