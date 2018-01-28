@@ -12,6 +12,7 @@ public class BulletForce : MonoBehaviour
     Vector3 myDirection;
     public int mySpeed = 2;
 	[SerializeField] float speedMult;
+	[SerializeField] float speedBase;
 	[SerializeField] float lifeTime;
 
     public int myTeam = 0;
@@ -41,7 +42,7 @@ public class BulletForce : MonoBehaviour
 		myRigid = GetComponent<Rigidbody>();
 		renderer = GetComponent<SpriteRenderer>();
         leadingDirection = transform.InverseTransformDirection(myRigid.velocity);
-		myRigid.velocity = myDirection * mySpeed * speedMult;
+		myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
         score = GameObject.FindObjectOfType<GameScore>();
 		transform.rotation = Quaternion.Euler(-60, 0, 0);
     }
@@ -54,13 +55,13 @@ public class BulletForce : MonoBehaviour
 
         if (myBulletType == BulletType.Raccomandata)
         {
-			myRigid.velocity = myDirection * mySpeed * speedMult;
+			myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
 			myRigid.velocity += new Vector3(myDirection.z, 0, -myDirection.x) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
         }
 
         else if (myBulletType == BulletType.Piccione)
         {
-			myRigid.velocity = myDirection * mySpeed * speedMult;
+			myRigid.velocity = myDirection * speedBase + myDirection * mySpeed * speedMult;
 			myRigid.velocity += new Vector3(myDirection.x, 0, myDirection.z) * Mathf.Sin(Time.time * raccomandataFrequency) * raccomandataAmplitude;
         }
     }
