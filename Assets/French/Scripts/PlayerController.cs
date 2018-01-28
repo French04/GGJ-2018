@@ -68,12 +68,20 @@ public class PlayerController : MonoBehaviour
     GameScore gameScore;
     PauseMenu pauseMenu;
 
-    void Start ()
+
+	private void Awake()
+	{
+		renderer = GetComponentInChildren<SpriteRenderer>();
+		if (Mathf.Pow(-1, team) < 0)
+			renderer.flipX = true;
+	}
+
+
+	void Start ()
     {
         canMove = true;
         inputController = GetComponent<InputController>();
         control = GetComponent<CharacterController>();
-		renderer = GetComponentInChildren<SpriteRenderer>();
 		myCollider = GetComponent<CapsuleCollider>();
 		parryCollider = GetComponentInChildren<CapsuleCollider>();
 		anim = GetComponentInChildren<Animator>();
@@ -81,7 +89,8 @@ public class PlayerController : MonoBehaviour
 		bulletRenderer = bulletRendererGO.GetComponent<SpriteRenderer>();
 		audioSource = GetComponent<AudioSource>();
 
-		lastDirection = new Vector3(Mathf.Pow(-1, team),0,0);
+		lastDirection = new Vector3(Mathf.Pow(-1, team), 0, 0);
+
 		throwStepTimer = throwStepTime;
 
         gameScore = FindObjectOfType<GameScore>();
