@@ -1998,16 +1998,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 12
       objectReference: {fileID: 0}
-    - target: {fileID: 212304911594406248, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 212304911594406248, guid: 40d85151d8696451c80c0bdeecb9ba6d,
-        type: 2}
-      propertyPath: m_WasSpriteAssigned
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 40d85151d8696451c80c0bdeecb9ba6d, type: 2}
   m_IsPrefabParent: 0
@@ -2307,7 +2297,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 274967817
+  randomSeed: -1597166698
   InitialModule:
     serializedVersion: 3
     enabled: 1

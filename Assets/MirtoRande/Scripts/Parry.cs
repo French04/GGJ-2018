@@ -15,10 +15,11 @@ public class Parry : MonoBehaviour {
 
 	void OnTriggerEnter(Collider hit)
 	{
-		if(hit.CompareTag("Bullet") && hit.GetComponent<BulletForce>().GetTeam() != player.team) {
-                player.SetShouldParry(true);
-                Destroy(hit.gameObject);
-                }
+		if(hit.CompareTag("Bullet") && hit.GetComponent<BulletForce>().GetTeam() != player.team) 
+		{
+            player.SetShouldParry(true);
+            Destroy(hit.gameObject);
+        }
 			
 	}
 
