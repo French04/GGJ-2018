@@ -17,7 +17,7 @@ public class PlayerController : MonoBehaviour
 
 	public int team;
 
-    InputController inputController;
+    public InputController inputController;
     [SerializeField] float gravity;
     float vSpeed;
     [SerializeField] float maxVSpeed;
@@ -390,7 +390,7 @@ public class PlayerController : MonoBehaviour
             if (!gameScore.gameOver)
             {
                 //Open or close pause menu
-                pauseMenu.PauseSwitch();
+                pauseMenu.PauseSwitch(inputController);
             }
             else {
                 //Reload match
