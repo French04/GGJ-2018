@@ -378,17 +378,17 @@ MonoBehaviour:
   gravity: 2
   maxVSpeed: 16
   lastDirection: {x: 0, y: 0, z: 0}
-  moveSpeed: 8
+  moveSpeed: 13
   rollSpeed: 32
-  rollTime: 0.1
+  rollTime: 0.35
   rollCoolDownTime: 0.5
-  parryTime: 0.5
+  parryTime: 0.3
   carrying: 0
   bulletRendererGO: {fileID: 1305222114496470}
   bulletCarried: {fileID: 1217677658735160, guid: ab3208551ed8e4d4a9fd7486bf813177,
     type: 2}
   throwOffset: 0.5
-  throwStepTime: 1
+  throwStepTime: 0.8
   particleCharge:
   - {fileID: 1090029539365248}
   - {fileID: 1696129629435228}
