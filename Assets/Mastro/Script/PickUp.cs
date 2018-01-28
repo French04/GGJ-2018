@@ -6,6 +6,8 @@ public class PickUp : MonoBehaviour {
 
 	PlayerController player;
     InputController control;
+	SpriteRenderer renderer;
+
     public GameObject bullet;
     public BulletForce.BulletType bulletType;
 	public Sprite bulletIcon;
@@ -24,7 +26,9 @@ public class PickUp : MonoBehaviour {
         myRender = GetComponent<MeshRenderer>();
         myCollider = GetComponent<Collider>();
         smoke = GetComponent<ParticleSystem>();
-        
+		renderer = GetComponent<SpriteRenderer>();
+
+		renderer.sprite = bulletIcon;
     }
 
     private void Update()
