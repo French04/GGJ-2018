@@ -41,18 +41,18 @@ public class InputController : MonoBehaviour {
     }
 
     public bool isFiring() {
-        if (!useKeyboard) return state.Buttons.A.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.RightShoulder.Equals(ButtonState.Pressed);
         return Input.GetButton("Fire_Keyboard");
     }
 
     public bool isDashing()
     {
-        if (!useKeyboard) return state.Buttons.B.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
         return Input.GetButton("Dash_Keyboard");
     }
 
     public bool isParrying() {
-        if (!useKeyboard) return state.Buttons.X.Equals(ButtonState.Pressed);
+        if (!useKeyboard) return state.Buttons.LeftShoulder.Equals(ButtonState.Pressed);
         return Input.GetButton("Crow_Keyboard");
     }
 
