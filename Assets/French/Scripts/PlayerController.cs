@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
     public bool canMove;
 
     GameScore gameScore;
+    PauseMenu pauseMenu;
 
     void Start ()
     {
@@ -84,7 +85,9 @@ public class PlayerController : MonoBehaviour
 		throwStepTimer = throwStepTime;
 
         gameScore = FindObjectOfType<GameScore>();
-	}
+        pauseMenu = FindObjectOfType<PauseMenu>();
+
+    }
 
 	void Update()
 	{
@@ -97,6 +100,11 @@ public class PlayerController : MonoBehaviour
         if(inputController.isPause() && gameScore.gameOver)
         {
             EditorSceneManager.LoadScene(1);
+        }
+
+        if(inputController.isPause() && !gameScore.gameOver)
+        {
+            pauseMenu.PauseSwitch();
         }
     }
 
