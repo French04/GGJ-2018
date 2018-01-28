@@ -32,9 +32,9 @@ public class PickUp : MonoBehaviour {
         if (enabledTime <= Time.time - takeItMoment && myRender.enabled == false)
         {
             myCollider.enabled = true;
-            myRender.enabled = true;
-            isPickUppable = true;
+            myRender.enabled = true;            
             smoke.Play();
+            isPickUppable = true;
             Debug.Log("Spawn");
         }      
     }
