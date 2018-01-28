@@ -13,14 +13,23 @@ public class GameScore : MonoBehaviour {
 	[SerializeField] GameObject scoreboard1;
 	[SerializeField] GameObject scoreboard2;
 	[SerializeField] GameObject timer;
+    GameObject winTeam1;
+    GameObject winTeam2;
 
 	TextMesh scoreText1;
 	TextMesh scoreText2;
 	TextMesh timerText;
+    PlayerController[] playerController = new PlayerController[4];
 
 	void Start()
 	{
-		scoreText1 = scoreboard1.GetComponent<TextMesh>();
+        playerController = FindObjectsOfType<PlayerController>();
+        winTeam1 = GameObject.Find("GameOver").transform.GetChild(0).gameObject;
+        winTeam2 = GameObject.Find("GameOver").transform.GetChild(1).gameObject;
+        winTeam1.SetActive(false);
+        winTeam2.SetActive(false);
+
+        scoreText1 = scoreboard1.GetComponent<TextMesh>();
 		scoreText2 = scoreboard2.GetComponent<TextMesh>();
 		timerText = timer.GetComponent<TextMesh>();
 		UpdateScore(0);
@@ -57,6 +66,22 @@ public class GameScore : MonoBehaviour {
 
 	void GameOver()
 	{
-		
+		if(teamOneScore > teamTwoScore)
+        {
+            winTeam1.SetActive(true);
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = false;
+            }
+            
+        }
+        else
+        {
+            winTeam2.SetActive(true);
+            for (int i = 0; i < playerController.Length; i++)
+            {
+                playerController[i].canMove = false;
+            }
+        }
 	}
 }

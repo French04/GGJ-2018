@@ -59,8 +59,12 @@ public class PlayerController : MonoBehaviour
 	[SerializeField] GameObject[] particleCharge;
 	ParticleSystem particleSmoke;
 
+    [HideInInspector]
+    public bool canMove;
+
     void Start ()
     {
+        canMove = true;
         inputController = GetComponent<InputController>();
         control = GetComponent<CharacterController>();
 		renderer = GetComponentInChildren<SpriteRenderer>();
@@ -76,9 +80,11 @@ public class PlayerController : MonoBehaviour
 
 	void Update()
 	{
-
-		ManageInput();
-		ManageMovement();
+        if (canMove)
+        {
+		    ManageInput();
+		    ManageMovement();
+        }
         
     }
 
